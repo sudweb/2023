@@ -1,0 +1,16 @@
+{
+  "name": "gatsby-plugin-material-ui",
+  "version": "4.1.0",
+  "description": "Gatsby plugin for Material-UI with built-in server-side rendering support",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {},
+  "peerDependencies": {
+    "@emotion/cache": "*",
+    "@emotion/react": "*",
+    "@emotion/server": "*",
+    "gatsby": "*",
+    "react": "*",
+    "react-dom": "*"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-theme-material-ui-top-layout",
+  "version": "5.2.0",
+  "description": "Gatsby theme for Material-UI",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {},
+  "peerDependencies": {
+    "@mui/material": "*",
+    "gatsby": "*",
+    "react": "*"
+  }
+}
