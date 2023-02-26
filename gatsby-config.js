@@ -2,9 +2,10 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: '/2023',
   siteMetadata: {
     title: 'Gatsby & MUI',
-    siteUrl: 'https://www.sudweb.fr',
+    siteUrl: 'https://www.sudweb.fr/2023',
   },
   plugins: [
     'gatsby-theme-material-ui-top-layout',
