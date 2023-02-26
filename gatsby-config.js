@@ -4,7 +4,7 @@
 module.exports = {
   pathPrefix: '/2023',
   siteMetadata: {
-    title: 'Gatsby & MUI',
+    title: 'Sudweb - La conférence Web surtout Humaine',
     siteUrl: 'https://www.sudweb.fr/2023',
   },
   plugins: [
