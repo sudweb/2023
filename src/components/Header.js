@@ -8,6 +8,7 @@ import MainNav from './MainNav';
 const Header = ({
   component = 'header',
   comeback = true,
+  prelude = '',
   h1,
   ...props
 }) => {
@@ -20,6 +21,7 @@ const Header = ({
           bgcolor: 'primary.main',
           color: 'white',
           pb: comeback ? 0 : '1rem',
+          mb: { xs: 6, sm: 8, md: 8, lg: 12 },
         }}
       >
         <MainNav />
@@ -86,11 +88,8 @@ const Header = ({
         )}
       </Box>
 
-      {comeback && (
-        <Container
-          maxWidth="lg"
-          sx={{ mt: { xs: 6, sm: 8, md: 8, lg: 12 } }}
-        >
+      {comeback && prelude && (
+        <Container maxWidth="lg">
           <Typography
             sx={{
               fontSize: {
@@ -103,7 +102,7 @@ const Header = ({
               textAlign: 'center',
             }}
           >
-            Après 3 ans d’absence, Sudweb revient et pose de nouveau ses valises dans la ville rose.
+            {prelude}
           </Typography>
         </Container>
       )}

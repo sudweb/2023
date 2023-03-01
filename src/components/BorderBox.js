@@ -36,6 +36,9 @@ const BorderBox = React.forwardRef(
               },
             };
           }
+          case 'simple': {
+            return {};
+          }
           default:
             return {
               boxShadow: `${depth}px ${depth}px 0 ${borderColor}`,
