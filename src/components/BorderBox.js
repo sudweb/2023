@@ -6,6 +6,7 @@ const BorderBox = React.forwardRef(
     sx = {},
     variant,
     borderColor = 'currentColor',
+    depth = 4,
     ...props
   }, ref) => {
     const variantStyle = React.useMemo(
@@ -25,23 +26,23 @@ const BorderBox = React.forwardRef(
               position: 'relative',
               '&:after': {
                 borderRadius: 4.5,
-                transform: 'translate(6px, 6px)',
+                transform: `translate(${depth * 1.5}px, ${depth * 1.5}px)`,
                 ...common,
               },
               '&:before': {
                 borderRadius: 5,
-                transform: 'translate(12px, 12px)',
+                transform: `translate(${depth * 3}px, ${depth * 3}px)`,
                 ...common,
               },
             };
           }
           default:
             return {
-              boxShadow: `4px 4px 0 ${borderColor}`,
+              boxShadow: `${depth}px ${depth}px 0 ${borderColor}`,
             };
         }
       },
-      [variant, borderColor],
+      [variant, depth, borderColor],
     );
     return (
       <Paper
