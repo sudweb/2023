@@ -3,6 +3,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import { Link } from 'gatsby-material-ui-components';
 
 import BorderBox from './BorderBox';
+import MainNav from './MainNav';
 
 const Header = ({
   component = 'header',
@@ -21,6 +22,7 @@ const Header = ({
           pb: comeback ? 0 : '1rem',
         }}
       >
+        <MainNav />
         <Container maxWidth="md">
           <Typography
             component={h1 ? 'h1' : Box}
