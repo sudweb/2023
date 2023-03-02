@@ -49,6 +49,7 @@ module.exports = {
                 woff: '/src/assets/fonts/subset-OraqleScript.woff',
                 woff2: '/src/assets/fonts/subset-OraqleScript.woff2',
               },
+              fontDisplay: 'block',
             },
           ],
           google2: [
