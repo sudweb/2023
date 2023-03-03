@@ -8,6 +8,7 @@ import FlatList from './FlatList';
 const Footer = ({
   component = 'footer',
   sponsor,
+  pageContext,
   ...props
 }) => (
   <Box component={component} {...props}>

@@ -10,6 +10,7 @@ const Header = ({
   comeback = true,
   prelude = '',
   h1,
+  pageContext,
   ...props
 }) => {
   const { typography: { pxToRem } } = useTheme();
