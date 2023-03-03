@@ -66,7 +66,7 @@ const PageLayout = ({
 
       {footer && (
         <Footer
-          sx={{ mt: 6 }}
+          sx={{ mt: 4 }}
           pageContext={pageContext}
           sponsor={pageContext?.frontmatter?.sponsor}
           {...footerProps}

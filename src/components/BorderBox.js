@@ -56,7 +56,7 @@ const BorderBox = React.forwardRef(
           borderRadius: 3.5,
           borderWidth: 3,
           px: { xs: 2, md: 6 },
-          py: { xs: 1, sm: 2, md: 3 },
+          py: { xs: 1, sm: 2, md: 5 },
           ...variantStyle,
           ...sx,
         }}

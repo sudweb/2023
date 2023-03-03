@@ -17,7 +17,7 @@ const Footer = ({
       <Sponsors />
     )}
 
-    <BorderBox container component={Grid} sx={{ mt: 6 }}>
+    <BorderBox container component={Grid} sx={{ mt: 4 }}>
       <Grid item xs={12} sm={12} md={4}>
         <Typography variant="h4">
           Épisodes précédents
