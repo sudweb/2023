@@ -13,7 +13,10 @@ const Header = ({
   pageContext,
   ...props
 }) => {
-  const { typography: { pxToRem } } = useTheme();
+  const {
+    typography: { pxToRem },
+    palette,
+  } = useTheme();
 
   return (
     <Box component={component} {...props}>
@@ -21,11 +24,11 @@ const Header = ({
         sx={{
           bgcolor: 'primary.main',
           color: 'white',
-          pb: comeback ? 0 : '1rem',
-          mb: { xs: 6, sm: 8, md: 8, lg: 12 },
+          pb: 4,
         }}
       >
         <MainNav />
+
         <Container maxWidth="md">
           <Typography
             component={h1 ? 'h1' : Box}
@@ -58,8 +61,14 @@ const Header = ({
             Les 2 et 3 juin 2023 à Toulouse
           </Typography>
         </Container>
+      </Box>
 
-        {comeback && (
+      {comeback && (
+        <Box
+          sx={{
+            background: `linear-gradient(0deg, transparent 50%, ${palette.primary.main} 50%)`,
+          }}
+        >
           <Container
             maxWidth="lg"
             sx={{
@@ -72,7 +81,7 @@ const Header = ({
               borderColor="#000807"
               sx={{
                 bgcolor: 'background.default',
-                transform: 'translateY(50%)',
+                py: { xs: 1, sm: 2, md: 3 },
               }}
             >
               <Typography
@@ -87,8 +96,8 @@ const Header = ({
               </Typography>
             </BorderBox>
           </Container>
-        )}
-      </Box>
+        </Box>
+      )}
 
       {comeback && prelude && (
         <Container maxWidth="lg">
