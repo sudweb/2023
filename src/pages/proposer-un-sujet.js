@@ -1,129 +1,220 @@
 import React from 'react';
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   FormControlLabel,
   Radio,
   Typography,
 } from '@mui/material';
+import { useForm } from 'react-hook-form';
 
 import PageLayout from '../components/PageLayout';
 import BorderBox from '../components/BorderBox';
 import SimpleTextField from '../components/SimpleTextField';
 import SimpleRadioField from '../components/SimpleRadioField';
 
-const SubjectForm = props => (
-  <PageLayout {...props}>
-    <BorderBox variant="simple">
-      <Typography variant="h2" component="h1" gutterBottom>
-        Appel à sujets
-      </Typography>
+const required = true;
 
-      <Box>
-        <Typography variant="body1" paragraph sx={{ fontWeight: 500 }}>
-          Vous souhaitez proposer une conférence ou un lightning-talk à Sud Web
-          pour la prochaine édition à Toulouse&nbsp;? Remplissez le formulaire
-          ci-dessous avant le vendredi 07 avril 23h59.
+const titles = {
+  'conf-title': 'un titre pour votre conférence',
+  'conf-format': 'sa durée',
+  'conf-envy': 'son contexte',
+  'conf-description': 'la description',
+  'speaker-name': 'vos prénom et nom',
+  'speaker-email': 'une adresse e-mail pour vous contacter',
+  'speaker-location': 'là d\'où vous venez',
+  'speaker-expenses': 'vos besoins de prise en charge',
+  'speaker-coaching': 'votre souhait d\'être accompagné ou non',
+};
+
+const SubjectForm = props => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [step, setStep] = React.useState(0);
+
+  const onSubmit = data => {
+    // eslint-disable-next-line no-console
+    console.log('onSubmit', data);
+  };
+
+  return (
+    <PageLayout {...props}>
+      <BorderBox variant="simple">
+        <Typography variant="h2" component="h1" gutterBottom>
+          Appel à sujets {step > 0 && `(${step}/2)`}
         </Typography>
 
-        <Typography variant="h3" component="h2" gutterBottom>
-          Votre conférence
-        </Typography>
+        <Box component="form" action="/2023/.netlify/function/proposition" method="POST" onSubmit={handleSubmit(onSubmit)}>
+          <Box sx={{ display: step < 2 ? 'block' : 'none' }}>
+            <Typography variant="body1" paragraph sx={{ fontWeight: 500 }}>
+              Vous souhaitez proposer une conférence ou un lightning-talk à Sud Web
+              pour la prochaine édition à Toulouse&nbsp;? Remplissez le formulaire
+              ci-dessous avant le vendredi 07 avril 23h59.
+            </Typography>
 
-        <SimpleTextField
-          id="conf-title"
-          label="Quel sera le titre de votre conférence&nbsp;?"
-        />
+            <Typography variant="h3" component="h2" gutterBottom>
+              Votre conférence
+            </Typography>
 
-        <SimpleRadioField
-          id="conf-format"
-          label="Quel sera son format&nbsp;?"
-        >
-          <FormControlLabel value="20 min" control={<Radio />} label="20 min" />
-          <FormControlLabel value="50 min" control={<Radio />} label="50 min" />
-        </SimpleRadioField>
+            <SimpleTextField
+              id="conf-title"
+              {...register('conf-title', { required: true })}
+              error={Boolean(errors?.['conf-title']?.type)}
+              label="Quel sera le titre de votre conférence&nbsp;?"
+              required={required}
+            />
 
-        <SimpleTextField
-          id="conf-envy"
-          label="Aidez nous à comprendre votre contenu. Dites-nous ce qui donnera envie au public de venir voir votre conférence. Que devrait-il en retenir&nbsp;?"
-          helperText="(Ce texte ne sera pas rendu public : c'est pour nous aider à comprendre ce que vous cherchez à partager.)"
-          multiline
-          minRows={5}
-        />
+            <SimpleRadioField
+              id="conf-format"
+              error={Boolean(errors?.['conf-format']?.type)}
+              label="Quel sera son format&nbsp;?"
+            >
+              <FormControlLabel value="20 min" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="20 min" />
+              <FormControlLabel value="50 min" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="50 min" />
+            </SimpleRadioField>
 
-        <SimpleTextField
-          id="conf-description"
-          label="Donnez une description de votre conférence (qui sera celle proposée sur le site)"
-          multiline
-          minRows={5}
-        />
+            <SimpleTextField
+              id="conf-envy"
+              {...register('conf-envy', { required: true })}
+              error={Boolean(errors?.['conf-envy']?.type)}
+              label="Aidez nous à comprendre votre contenu. Dites-nous ce qui donnera envie au public de venir voir votre conférence. Que devrait-il en retenir&nbsp;?"
+              helperText="(Ce texte ne sera pas rendu public : c'est pour nous aider à comprendre ce que vous cherchez à partager.)"
+              multiline
+              minRows={5}
+              required={required}
+            />
 
-        <Box sx={{ textAlign: 'center' }}>
-          <Button variant="contained" sx={{ mt: 4 }}>
-            Valider et continuer
-          </Button>
+            <SimpleTextField
+              id="conf-description"
+              {...register('conf-description', { required: true })}
+              error={Boolean(errors?.['conf-description']?.type)}
+              label="Donnez une description de votre conférence (qui sera celle proposée sur le site)"
+              multiline
+              minRows={5}
+              required={required}
+            />
+
+            {step > 0 && (
+              <Box sx={{ textAlign: 'center' }}>
+                <Button
+                  variant="contained"
+                  sx={{ mt: 4 }}
+                  onClick={() => {
+                    setStep(2);
+                    window?.scrollTo?.(0, 0);
+                  }}
+                >
+                  Valider et continuer
+                </Button>
+              </Box>
+            )}
+          </Box>
+
+          <Box
+            sx={{
+              display: (step < 1 || step > 1) ? 'block' : 'none',
+              mt: 8,
+            }}
+          >
+            <Typography variant="h3" component="h2" gutterBottom>
+              Vous
+            </Typography>
+
+            <SimpleTextField
+              id="speaker-name"
+              {...register('speaker-name', { required: true })}
+              error={Boolean(errors?.['speaker-name']?.type)}
+              label="Vos prénom et nom"
+              required={required}
+            />
+
+            <SimpleTextField
+              id="speaker-email"
+              {...register('speaker-email', { required: true })}
+              error={Boolean(errors?.['speaker-email']?.type)}
+              label="Votre adresse e-mail"
+              type="email"
+              required={required}
+            />
+
+            <SimpleTextField
+              id="speaker-location"
+              {...register('speaker-location', { required: true })}
+              error={Boolean(errors?.['speaker-location']?.type)}
+              label="Où êtes-vous situé·e&nbsp;?"
+              required={required}
+            />
+
+            <SimpleRadioField
+              id="speaker-expenses"
+              error={Boolean(errors?.['speaker-expenses']?.type)}
+              label="Aurez-vous besoin d’une prise en charge de votre déplacement et d’un hébergement ?"
+              helperText="(c’est à titre indicatif pour nous donner une idée des réservations à effectuer. Nous revaliderons avec vous si votre sujet est retenu)"
+            >
+              <FormControlLabel value="Déplacement + hébergement" control={<Radio required={required} {...register('speaker-expenses', { required: true })} />} label="Une prise en charge de mon déplacement et de mon hébergement" />
+              <FormControlLabel value="Déplacement" control={<Radio required={required} {...register('speaker-expenses', { required: true })} />} label="Juste de mon déplacement" />
+              <FormControlLabel value="Hébergement" control={<Radio required={required} {...register('speaker-expenses', { required: true })} />} label="Juste de mon hébergement" />
+              <FormControlLabel value="Rien" control={<Radio required={required} {...register('speaker-expenses', { required: true })} />} label="Pas besoin, merci" />
+            </SimpleRadioField>
+
+            <SimpleRadioField
+              id="speaker-coaching"
+              error={Boolean(errors?.['speaker-coaching']?.type)}
+              label="Souhaitez-vous bénéficier d’un coaching ou d’une aide particulière pour préparer ou finaliser votre conférence ?"
+              helperText="(c’est à titre indicatif. Nous affinerons votre demande si votre sujet est retenu)"
+            >
+              <FormControlLabel value="true" control={<Radio required={required} {...register('speaker-coaching', { required: true })} />} label="Oui je veux bien un accompagnement" />
+              <FormControlLabel value="false" control={<Radio required={required} {...register('speaker-coaching', { required: true })} />} label="Pas besoin, merci" />
+            </SimpleRadioField>
+
+            <SimpleTextField
+              id="speaker-help"
+              {...register('speaker-help')}
+              error={Boolean(errors?.['speaker-help']?.type)}
+              label="Avez-vous besoin d’aide concernant votre venue, votre proposition ou n’importe quel autre aspect de ce Sud Web ? (Facultatif)"
+              helperText="(ça ne sera pas publié sur le site)"
+              multiline
+              minRows={5}
+            />
+
+            {Boolean(Object.keys(errors).length) && (
+              <Alert severity="error" variant="outlined" sx={{ mt: 4 }} icon={false}>
+                <AlertTitle>
+                  Certaines informations sont indispensables pour pouvoir
+                  envoyer cette proposition&nbsp;:
+                </AlertTitle>
+                <Typography variant="body1">
+                  Il manque&nbsp;: {Object.keys(errors).map(error => titles[error]).join(', ')}.
+                </Typography>
+              </Alert>
+            )}
+
+            <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+              {step > 0 && (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ mt: 4 }}
+                  onClick={() => { setStep(1); window?.scrollTo?.(0, 0); }}
+                >
+                  Revenir en arrière
+                </Button>
+              )}
+
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{ mt: 4 }}
+              >
+                Valider et soumettre
+              </Button>
+            </Box>
+          </Box>
         </Box>
-      </Box>
-
-      <Box>
-        <Typography variant="h3" component="h2" gutterBottom>
-          Vous
-        </Typography>
-
-        <SimpleTextField
-          id="speaker-name"
-          label="Vos prénom et nom"
-        />
-
-        <SimpleTextField
-          id="speaker-email"
-          label="Votre adresse e-mail"
-          type="email"
-        />
-
-        <SimpleTextField
-          id="speaker-location"
-          label="Où êtes-vous situé·e&nbsp;?"
-        />
-
-        <SimpleRadioField
-          id="speaker-expenses"
-          label="Aurez-vous besoin d’une prise en charge de votre déplacement et d’un hébergement ?"
-          helperText="(c’est à titre indicatif pour nous donner une idée des réservations à effectuer. Nous revaliderons avec vous si votre sujet est retenu)"
-        >
-          <FormControlLabel value="Déplacement + hébergement" control={<Radio />} label="Une prise en charge de mon déplacement et de mon hébergement" />
-          <FormControlLabel value="Déplacement" control={<Radio />} label="Juste de mon déplacement" />
-          <FormControlLabel value="Hébergement" control={<Radio />} label="Juste de mon hébergement" />
-          <FormControlLabel value="Rien" control={<Radio />} label="Pas besoin, merci" />
-        </SimpleRadioField>
-
-        <SimpleRadioField
-          id="speaker-help"
-          label="Souhaitez-vous bénéficier d’un coaching ou d’une aide particulière pour préparer ou finaliser votre conférence ?"
-          helperText="(c’est à titre indicatif. Nous affinerons votre demande si votre sujet est retenu)"
-        >
-          <FormControlLabel value="Accompagnement" control={<Radio />} label="Oui je veux bien un accompagnement" />
-          <FormControlLabel value="" control={<Radio />} label="Pas besoin, merci" />
-        </SimpleRadioField>
-
-        <SimpleTextField
-          id="speaker-needs"
-          label="Avez-vous besoin d’aide concernant votre venue, votre proposition ou n’importe quel autre aspect de ce Sud Web ? (Facultatif)"
-          helperText="(ça ne sera pas publié sur le site)"
-          multiline
-          minRows={5}
-        />
-
-        <Box sx={{ textAlign: 'center' }}>
-          <Button variant="contained" sx={{ mt: 4 }}>
-            Valider et soumettre
-          </Button>
-        </Box>
-      </Box>
-
-    </BorderBox>
-
-  </PageLayout>
-);
+      </BorderBox>
+    </PageLayout>
+  );
+};
 
 export default SubjectForm;
