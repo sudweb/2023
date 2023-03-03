@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 import { MDXProvider } from '@mdx-js/react';
-import { Button } from 'gatsby-material-ui-components';
+import { Button, Link } from 'gatsby-material-ui-components';
 
 import BorderBox from './BorderBox';
 import Footer from './Footer';
@@ -24,6 +24,7 @@ const shortcodes = {
   CTA: ({ sx = {}, ...props }) => (
     <Button variant="contained" sx={{ mb: 2, ...sx }} {...props} />
   ),
+  a: props => <Link {...props} />,
   p: props => <Typography variant="body1" paragraph {...props} />,
   h1: props => <Typography variant="h1" gutterBottom {...props} />,
   h2: props => <Typography variant="h2" gutterBottom {...props} />,
