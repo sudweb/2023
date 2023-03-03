@@ -4,6 +4,7 @@ import BorderBox from './BorderBox';
 
 import editions from '../data/editions.json';
 import FlatList from './FlatList';
+import Sponsors from './Sponsors';
 
 const Footer = ({
   component = 'footer',
@@ -13,21 +14,7 @@ const Footer = ({
 }) => (
   <Box component={component} {...props}>
     {sponsor && (
-    <BorderBox color="secondary">
-      <Typography variant="h2" gutterBottom>
-        Devenez sponsor
-      </Typography>
-
-      <Typography variant="body1" paragraph>
-        Devenez sponsor
-      </Typography>
-
-      <Typography variant="h2" gutterBottom>
-        Nos partenaires
-      </Typography>
-
-      YNOV
-    </BorderBox>
+      <Sponsors />
     )}
 
     <BorderBox container component={Grid} sx={{ mt: 6 }}>
