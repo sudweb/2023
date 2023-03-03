@@ -80,6 +80,7 @@ const Header = ({
                   fontSize: { xs: '1.2rem', sm: '1.6rem', md: '1.9rem', lg: '2.2rem' },
                   fontWeight: 600,
                   lineHeight: 1.2,
+                  color: 'text.secondary',
                 }}
               >
                 La conférence Web surtout Humaine revient&nbsp;!
@@ -101,6 +102,7 @@ const Header = ({
               fontWeight: 700,
               lineHeight: 1.2,
               textAlign: 'center',
+              color: 'text.secondary',
             }}
           >
             {prelude}

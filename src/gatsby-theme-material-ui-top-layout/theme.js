@@ -1,5 +1,8 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
+const TEXT_1 = '#000807';
+const TEXT_2 = '#59344F';
+
 const theme = responsiveFontSizes(createTheme({
   palette: {
     primary: {
@@ -12,7 +15,8 @@ const theme = responsiveFontSizes(createTheme({
       default: '#faf6e9',
     },
     text: {
-      primary: '#59344F',
+      primary: TEXT_1,
+      secondary: TEXT_2,
     },
   },
   typography: {
@@ -47,11 +51,25 @@ const theme = responsiveFontSizes(createTheme({
       },
       styleOverrides: {
         root: {
-          fontStyle: 'italic',
           '&:visited': {
             color: '#7d2c55',
           },
         },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        paragraph: {
+          marginBottom: '1.5em',
+        },
+        gutterBottom: {
+          marginBottom: '0.8em',
+        },
+        h1: { color: TEXT_2 },
+        h2: { color: TEXT_2 },
+        h3: { color: TEXT_2 },
+        h4: { color: TEXT_2 },
+        h5: { color: TEXT_2 },
       },
     },
   },
