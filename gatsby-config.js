@@ -2,10 +2,10 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: '/2023',
+  pathPrefix: '/3202',
   siteMetadata: {
     title: 'Sudweb - La conférence Web surtout Humaine',
-    siteUrl: 'https://www.sudweb.fr/2023',
+    siteUrl: 'https://www.sudweb.fr/3202',
   },
   plugins: [
     'gatsby-theme-material-ui-top-layout',
