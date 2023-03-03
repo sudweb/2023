@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   FormControlLabel,
+  GlobalStyles,
   Radio,
   Typography,
 } from '@mui/material';
@@ -16,6 +17,16 @@ import SimpleTextField from '../components/SimpleTextField';
 import SimpleRadioField from '../components/SimpleRadioField';
 
 const required = true;
+
+const inputGlobalStyles = (
+  <GlobalStyles styles={{
+    'input[type="radio"]': {
+      opacity: 1,
+      transform: 'scale(45%)',
+    },
+  }}
+  />
+);
 
 const titles = {
   'conf-title': 'un titre pour votre conférence',
@@ -32,6 +43,14 @@ const titles = {
 const SubjectForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [step, setStep] = React.useState(0);
+  const [runtime, setRuntime] = React.useState(false);
+
+  React.useEffect(
+    () => {
+      setRuntime(true);
+    },
+    [],
+  );
 
   const onSubmit = data => {
     // eslint-disable-next-line no-console
@@ -40,6 +59,7 @@ const SubjectForm = props => {
 
   return (
     <PageLayout {...props}>
+      {!runtime && inputGlobalStyles}
       <BorderBox variant="simple">
         <Typography variant="h2" component="h1" gutterBottom>
           Appel à sujets {step > 0 && `(${step}/2)`}
@@ -82,6 +102,7 @@ const SubjectForm = props => {
               helperText="(Ce texte ne sera pas rendu public : c'est pour nous aider à comprendre ce que vous cherchez à partager.)"
               multiline
               minRows={5}
+              rows={!runtime && 5}
               required={required}
             />
 
@@ -92,6 +113,7 @@ const SubjectForm = props => {
               label="Donnez une description de votre conférence (qui sera celle proposée sur le site)"
               multiline
               minRows={5}
+              rows={!runtime && 5}
               required={required}
             />
 
@@ -176,6 +198,7 @@ const SubjectForm = props => {
               helperText="(ça ne sera pas publié sur le site)"
               multiline
               minRows={5}
+              rows={!runtime && 5}
             />
 
             {Boolean(Object.keys(errors).length) && (
