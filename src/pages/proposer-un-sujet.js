@@ -25,7 +25,7 @@ const Index = props => (
 
       <Typography variant="body1" paragraph>
         Vous souhaitez proposer une conférence ou un lightning-talk à Sud Web
-        pour la prochaine édition à Toulouse ? Remplissez le formulaire
+        pour la prochaine édition à Toulouse&nbsp;? Remplissez le formulaire
         ci-dessous avant le vendredi 07 avril 23h59.
       </Typography>
 
@@ -43,7 +43,7 @@ const Index = props => (
           mb: 2,
         }}
       >
-        Quel est le titre de votre conférence ?
+        Quel est le titre de votre conférence&nbsp;?
       </InputLabel>
       <FormControl variant="standard" fullWidth>
         <OutlinedInput id="conf-title" />
@@ -60,7 +60,7 @@ const Index = props => (
           display: 'block',
         }}
       >
-        Quel sera son format ?
+        Quel sera son format&nbsp;?
       </FormLabel>
 
       <FormControl>
@@ -84,7 +84,7 @@ const Index = props => (
         }}
       >
         Donnez envie au public de venir voir votre conférence.<br />
-        Que devrait-il en retenir ?
+        Que devrait-il en retenir&nbsp;?
       </InputLabel>
       <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
         (Ce texte ne sera pas rendu public : c'est pour nous aider à comprendre

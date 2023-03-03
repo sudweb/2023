@@ -53,7 +53,7 @@ const Footer = ({
 
       <Grid item xs={12} sm={12} md={4}>
         <Typography variant="h4">
-          On reste en contact ?
+          On reste en contact&nbsp;?
         </Typography>
       </Grid>
     </BorderBox>
