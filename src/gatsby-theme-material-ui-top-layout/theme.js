@@ -72,6 +72,21 @@ const theme = responsiveFontSizes(createTheme({
         h5: { color: TEXT_2 },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        contained: {
+          textTransform: 'none',
+          fontSize: '2.2rem',
+          fontWeight: 700,
+          padding: '0 32px',
+          borderRadius: '10px',
+          boxShadow: `4px 4px 0 ${TEXT_2}`,
+          '&:hover': {
+            boxShadow: `4px 4px 0 ${TEXT_2}`,
+          },
+        },
+      },
+    },
   },
 }));
 
