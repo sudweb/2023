@@ -112,6 +112,7 @@ const Header = ({
               lineHeight: 1.2,
               textAlign: 'center',
               color: 'text.secondary',
+              mt: 5,
             }}
           >
             {prelude}
