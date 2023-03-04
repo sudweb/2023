@@ -1,0 +1,141 @@
+import React from 'react';
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Typography,
+} from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { navigate, withPrefix } from 'gatsby';
+
+import PageLayout from '../components/PageLayout';
+import BorderBox from '../components/BorderBox';
+import SimpleTextField from '../components/SimpleTextField';
+import CallToAction from '../components/CallToAction';
+
+const required = true;
+
+const titles = {
+  'contact-name': 'vos prénom et nom',
+  'contact-email': 'votre adresse email',
+  'contact-company': 'votre entreprise',
+  'contact-message': 'votre message',
+};
+
+const ContactForm = props => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [runtime, setRuntime] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(
+    () => {
+      setRuntime(true);
+    },
+    [],
+  );
+
+  const onSubmit = async data => {
+    setLoading(true);
+    const response = await fetch(
+      withPrefix('/api/contact'),
+      {
+        method: 'POST',
+        'content-type': 'application/json',
+        body: JSON.stringify({
+          ...data,
+          redirect: false,
+        }),
+      },
+    );
+    if (response.status === 201) {
+      navigate('/merci');
+    } else {
+      navigate('/erreur');
+    }
+  };
+
+  return (
+    <PageLayout {...props}>
+      <BorderBox variant="simple">
+        <Typography variant="h2" component="h1" gutterBottom>
+          Devenez sponsor
+        </Typography>
+
+        <Box
+          component="form"
+          action={withPrefix('/api/contact')}
+          method="POST"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Typography variant="body1" paragraph sx={{ fontWeight: 500 }}>
+            Vous souhaitez soutenir Sud Web pour sa prochaine édition&nbsp;?
+            Contactez-nous et nous verrons ensemble comment vous pourrez nous
+            aider.
+          </Typography>
+
+          <SimpleTextField
+            id="contact-name"
+            {...register('contact-name', { required: true })}
+            error={Boolean(errors?.['contact-name']?.type)}
+            label="Vos prénom et nom"
+            required={required}
+          />
+
+          <SimpleTextField
+            id="contact-email"
+            {...register('contact-email', { required: true })}
+            error={Boolean(errors?.['contact-email']?.type)}
+            label="Votre adresse email"
+            required={required}
+          />
+
+          <SimpleTextField
+            id="contact-company"
+            {...register('contact-company')}
+            error={Boolean(errors?.['contact-company']?.type)}
+            label="Votre entreprise"
+          />
+
+          <SimpleTextField
+            id="contact-message"
+            {...register('contact-message', { required: true })}
+            error={Boolean(errors?.['contact-message']?.type)}
+            label="Votre message à notre intention"
+            multiline
+            minRows={5}
+            rows={runtime ? undefined : 5}
+            required={required}
+          />
+
+          {Boolean(Object.keys(errors).length) && (
+            <Alert severity="error" variant="outlined" sx={{ mt: 4 }} icon={false}>
+              <AlertTitle>
+                Certaines informations sont indispensables pour pouvoir
+                envoyer votre message&nbsp;:
+              </AlertTitle>
+              <Typography variant="body1">
+                Il manque&nbsp;: {Object.keys(errors).map(error => titles[error]).join(', ')}.
+              </Typography>
+            </Alert>
+          )}
+
+          <input type="hidden" id="redirect" name="redirect" value={withPrefix('/')} />
+          <input type="hidden" id="mode" name="sponsor" value={withPrefix('/')} />
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+            <CallToAction
+              disabled={loading}
+              variant="contained"
+              type="submit"
+              sx={{ mt: 4 }}
+            >
+              Envoyer votre message
+            </CallToAction>
+          </Box>
+        </Box>
+      </BorderBox>
+    </PageLayout>
+  );
+};
+
+export default ContactForm;
