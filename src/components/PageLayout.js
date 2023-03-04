@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 import { MDXProvider } from '@mdx-js/react';
-import { Button, Link } from 'gatsby-material-ui-components';
+import { Link } from 'gatsby-material-ui-components';
 
 import BorderBox from './BorderBox';
 import Footer from './Footer';
 import Header from './Header';
+import CallToAction from './CallToAction';
 
 const nullObj = {};
 
@@ -22,7 +23,7 @@ const shortcodes = {
     />
   ),
   CTA: ({ sx = {}, ...props }) => (
-    <Button variant="contained" sx={{ mb: 2, ...sx }} {...props} />
+    <CallToAction sx={{ mb: 2, ...sx }} {...props} />
   ),
   a: ({ href, to = href, ...props }) => <Link to={to} {...props} />,
   p: props => <Typography variant="body1" paragraph {...props} />,

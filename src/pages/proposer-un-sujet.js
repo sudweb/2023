@@ -3,7 +3,6 @@ import {
   Alert,
   AlertTitle,
   Box,
-  Button,
   FormControlLabel,
   GlobalStyles,
   Radio,
@@ -16,6 +15,7 @@ import PageLayout from '../components/PageLayout';
 import BorderBox from '../components/BorderBox';
 import SimpleTextField from '../components/SimpleTextField';
 import SimpleRadioField from '../components/SimpleRadioField';
+import CallToAction from '../components/CallToAction';
 
 const required = true;
 
@@ -141,7 +141,7 @@ const SubjectForm = props => {
 
             {step > 0 && (
               <Box sx={{ textAlign: 'center' }}>
-                <Button
+                <CallToAction
                   variant="contained"
                   sx={{ mt: 4 }}
                   onClick={() => {
@@ -150,7 +150,7 @@ const SubjectForm = props => {
                   }}
                 >
                   Valider et continuer
-                </Button>
+                </CallToAction>
               </Box>
             )}
           </Box>
@@ -239,24 +239,24 @@ const SubjectForm = props => {
 
             <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
               {step > 0 && (
-                <Button
+                <CallToAction
                   variant="contained"
                   color="secondary"
                   sx={{ mt: 4 }}
                   onClick={() => { setStep(1); window?.scrollTo?.(0, 0); }}
                 >
                   Revenir en arrière
-                </Button>
+                </CallToAction>
               )}
 
-              <Button
+              <CallToAction
                 disabled={loading}
                 variant="contained"
                 type="submit"
                 sx={{ mt: 4 }}
               >
                 Valider et soumettre
-              </Button>
+              </CallToAction>
             </Box>
           </Box>
         </Box>
