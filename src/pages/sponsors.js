@@ -87,6 +87,7 @@ const ContactForm = props => {
             {...register('contact-email', { required: true })}
             error={Boolean(errors?.['contact-email']?.type)}
             label="Votre adresse email"
+            type="email"
             required={required}
           />
 
