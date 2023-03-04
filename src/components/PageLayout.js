@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { MDXProvider } from '@mdx-js/react';
 import { Link } from 'gatsby-material-ui-components';
 
@@ -47,6 +47,7 @@ const shortcodes = {
   h4: props => <Typography variant="h4" gutterBottom {...props} />,
   h5: props => <Typography variant="h5" gutterBottom {...props} />,
   h6: props => <Typography variant="h6" gutterBottom {...props} />,
+  Img: ({ sx = {}, ...props }) => <Box component="img" sx={{ ...sx }} {...props} />,
 };
 
 const PageLayout = ({
