@@ -63,7 +63,7 @@ const SubjectForm = props => {
         'content-type': 'application/json',
         body: JSON.stringify({
           ...data,
-          redirect: false,
+          redirect: 'false',
         }),
       },
     );

@@ -43,12 +43,13 @@ const ContactForm = props => {
         'content-type': 'application/json',
         body: JSON.stringify({
           ...data,
-          redirect: false,
+          redirect: 'false',
+          mode: 'sponsor',
         }),
       },
     );
     if (response.status === 201) {
-      navigate('/merci');
+      navigate('/merci-contact');
     } else {
       navigate('/erreur');
     }
@@ -120,7 +121,7 @@ const ContactForm = props => {
           )}
 
           <input type="hidden" id="redirect" name="redirect" value={withPrefix('/')} />
-          <input type="hidden" id="mode" name="sponsor" value={withPrefix('/')} />
+          <input type="hidden" id="mode" name="mode" value="sponsor" />
 
           <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
             <CallToAction

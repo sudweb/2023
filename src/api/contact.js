@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 
-const dbId = process.env.DBID_CONF;
+const dbId = process.env.DBID_CONTACT;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const makeTitle = content => ({ title: [{ text: { content } }] });
 const makeText = content => ({ rich_text: [{ text: { content } }] });
@@ -12,16 +12,10 @@ export default async (req, res) => {
   const parent = { type: 'database_id', database_id: dbId };
 
   const properties = {
-    Titre: makeTitle(data['conf-title']),
-    Format: { select: { name: data['conf-format'] } },
-    'Donner envie': makeText(data['conf-envy']),
-    Description: makeText(data['conf-description']),
-    Nom: makeText(data['speaker-name']),
-    'E-mail': { email: data['speaker-email'] },
-    Où: makeText(data['speaker-location']),
-    Défraiement: { select: { name: data['speaker-expenses'] || 'Rien' } },
-    Accompagnement: { checkbox: (data['speaker-coaching'] === 'true') },
-    'Besoin d\'aide': makeText(data['speaker-help']),
+    Nom: makeTitle(data['contact-name']),
+    'E-mail': { email: data['contact-email'] },
+    Entreprise: makeText(data['contact-company']),
+    Message: makeText(data['contact-message']),
   };
 
   let error;
@@ -31,7 +25,7 @@ export default async (req, res) => {
     if (createPaged) {
       return (data.redirect === 'false')
         ? res.status(201).json({ created_time: createPaged.created_time })
-        : res.redirect(`${data.redirect}merci/`);
+        : res.redirect(`${data.redirect || '/'}merci-contact/`);
     }
   } catch (err) {
     error = err;
