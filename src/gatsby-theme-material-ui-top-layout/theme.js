@@ -36,7 +36,7 @@ const theme = responsiveFontSizes(createTheme({
     },
     h4: {
       fontSize: '1.5625rem',
-      fontWeight: 400,
+      fontWeight: 500,
     },
     body1: {
       fontSize: '1.25rem',
