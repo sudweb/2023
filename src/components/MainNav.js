@@ -15,7 +15,7 @@ const navItems = [
   // },
   {
     children: <>Lieux et comment venir&nbsp;?</>,
-    to: '/le-lieu',
+    to: '/les-lieux',
   },
   {
     children: 'Sponsors',
