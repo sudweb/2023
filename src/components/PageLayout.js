@@ -47,7 +47,16 @@ const shortcodes = {
   h4: props => <Typography variant="h4" gutterBottom {...props} />,
   h5: props => <Typography variant="h5" gutterBottom {...props} />,
   h6: props => <Typography variant="h6" gutterBottom {...props} />,
-  Img: ({ sx = {}, ...props }) => <Box component="img" sx={{ ...sx }} {...props} />,
+  Img: ({ sx = {}, ...props }) => (
+    <Box
+      component="img"
+      sx={{
+        maxWidth: '100%',
+        ...sx,
+      }}
+      {...props}
+    />
+  ),
 };
 
 const PageLayout = ({
