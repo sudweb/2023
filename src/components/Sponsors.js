@@ -29,7 +29,7 @@ const Sponsors = () => {
           Nos partenaires
         </Typography>
 
-        <Link to="https://perdu.com">
+        <Link to="https://ynov-toulouse.com/">
           <Box
             component="img"
             src={ynov}
