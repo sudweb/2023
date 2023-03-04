@@ -75,7 +75,7 @@ const SubjectForm = props => {
   };
 
   return (
-    <PageLayout {...props}>
+    <PageLayout title="Proposer un sujet" {...props}>
       {!runtime && inputGlobalStyles}
       <BorderBox variant="simple">
         <Typography variant="h2" component="h1" gutterBottom>

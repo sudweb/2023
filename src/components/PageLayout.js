@@ -2,11 +2,13 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { MDXProvider } from '@mdx-js/react';
 import { Link } from 'gatsby-material-ui-components';
+import { Helmet } from 'react-helmet';
 
 import BorderBox from './BorderBox';
 import Footer from './Footer';
 import Header from './Header';
 import CallToAction from './CallToAction';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 const nullObj = {};
 
@@ -66,40 +68,51 @@ const PageLayout = ({
   footer = true,
   footerProps = nullObj,
   pageContext = nullObj,
+  title = pageContext?.frontmatter?.title,
   ...props
-}) => (
-  <>
-    {header && (
-      <Header
-        h1={props.uri === '/'}
-        pageContext={pageContext}
-        prelude={pageContext?.frontmatter?.prelude}
-        {...headerProps}
+}) => {
+  const siteMetadata = useSiteMetadata();
+  const pageTitle = title ? `SudWeb - ${title}` : siteMetadata.title;
+
+  return (
+    <>
+      <Helmet
+        htmlAttributes={{ lang: 'fr' }}
+        title={pageTitle}
       />
-    )}
 
-    <Container
-      maxWidth="lg"
-      component="main"
-      sx={{
-        mt: 6,
-        pb: 4,
-      }}
-    >
-      <MDXProvider components={shortcodes}>
-        {children}
-      </MDXProvider>
-
-      {footer && (
-        <Footer
-          sx={{ mt: 4 }}
+      {header && (
+        <Header
+          h1={props.uri === '/'}
           pageContext={pageContext}
-          sponsor={pageContext?.frontmatter?.sponsor}
-          {...footerProps}
+          prelude={pageContext?.frontmatter?.prelude}
+          {...headerProps}
         />
       )}
-    </Container>
-  </>
-);
+
+      <Container
+        maxWidth="lg"
+        component="main"
+        sx={{
+          mt: 6,
+          pb: 4,
+        }}
+      >
+        <MDXProvider components={shortcodes}>
+          {children}
+        </MDXProvider>
+
+        {footer && (
+          <Footer
+            sx={{ mt: 4 }}
+            pageContext={pageContext}
+            sponsor={pageContext?.frontmatter?.sponsor}
+            {...footerProps}
+          />
+        )}
+      </Container>
+    </>
+  );
+};
 
 export default PageLayout;

@@ -5,8 +5,9 @@ require('dotenv').config();
 
 module.exports = {
   pathPrefix: '/3202',
+  trailingSlash: 'ignore',
   siteMetadata: {
-    title: 'Sudweb - La conférence Web surtout Humaine',
+    title: 'SudWeb - La conférence Web surtout Humaine',
     siteUrl: 'https://www.sudweb.fr/3202',
   },
   plugins: [
