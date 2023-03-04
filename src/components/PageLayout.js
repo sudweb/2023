@@ -24,7 +24,7 @@ const shortcodes = {
   CTA: ({ sx = {}, ...props }) => (
     <Button variant="contained" sx={{ mb: 2, ...sx }} {...props} />
   ),
-  a: props => <Link {...props} />,
+  a: ({ href, to = href, ...props }) => <Link to={to} {...props} />,
   p: props => <Typography variant="body1" paragraph {...props} />,
   h1: props => <Typography variant="h1" gutterBottom {...props} />,
   h2: props => <Typography variant="h2" gutterBottom {...props} />,

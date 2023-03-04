@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { navigate, withPrefix } from 'gatsby';
 
 import PageLayout from '../components/PageLayout';
 import BorderBox from '../components/BorderBox';
@@ -44,6 +45,7 @@ const SubjectForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [step, setStep] = React.useState(0);
   const [runtime, setRuntime] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(
     () => {
@@ -52,9 +54,24 @@ const SubjectForm = props => {
     [],
   );
 
-  const onSubmit = data => {
-    // eslint-disable-next-line no-console
-    console.log('onSubmit', data);
+  const onSubmit = async data => {
+    setLoading(true);
+    const response = await fetch(
+      withPrefix('/api/proposition'),
+      {
+        method: 'POST',
+        'content-type': 'application/json',
+        body: JSON.stringify({
+          ...data,
+          redirect: false,
+        }),
+      },
+    );
+    if (response.status === 201) {
+      navigate('/merci');
+    } else {
+      navigate('/erreur');
+    }
   };
 
   return (
@@ -65,7 +82,12 @@ const SubjectForm = props => {
           Appel à sujets {step > 0 && `(${step}/2)`}
         </Typography>
 
-        <Box component="form" action="/2023/.netlify/function/proposition" method="POST" onSubmit={handleSubmit(onSubmit)}>
+        <Box
+          component="form"
+          action={withPrefix('/api/proposition')}
+          method="POST"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Box sx={{ display: step < 2 ? 'block' : 'none' }}>
             <Typography variant="body1" paragraph sx={{ fontWeight: 500 }}>
               Vous souhaitez proposer une conférence ou un lightning-talk à Sud Web
@@ -90,8 +112,8 @@ const SubjectForm = props => {
               error={Boolean(errors?.['conf-format']?.type)}
               label="Quel sera son format&nbsp;?"
             >
-              <FormControlLabel value="20 min" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="20 min" />
-              <FormControlLabel value="50 min" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="50 min" />
+              <FormControlLabel value="20 minutes" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="20 min" />
+              <FormControlLabel value="5 minutes" control={<Radio required={required} {...register('conf-format', { required: true })} />} label="5 min" />
             </SimpleRadioField>
 
             <SimpleTextField
@@ -102,7 +124,7 @@ const SubjectForm = props => {
               helperText="(Ce texte ne sera pas rendu public : c'est pour nous aider à comprendre ce que vous cherchez à partager.)"
               multiline
               minRows={5}
-              rows={!runtime && 5}
+              rows={runtime ? undefined : 5}
               required={required}
             />
 
@@ -113,7 +135,7 @@ const SubjectForm = props => {
               label="Donnez une description de votre conférence (qui sera celle proposée sur le site)"
               multiline
               minRows={5}
-              rows={!runtime && 5}
+              rows={runtime ? undefined : 5}
               required={required}
             />
 
@@ -198,7 +220,7 @@ const SubjectForm = props => {
               helperText="(ça ne sera pas publié sur le site)"
               multiline
               minRows={5}
-              rows={!runtime && 5}
+              rows={runtime ? undefined : 5}
             />
 
             {Boolean(Object.keys(errors).length) && (
@@ -213,6 +235,8 @@ const SubjectForm = props => {
               </Alert>
             )}
 
+            <input type="hidden" id="redirect" name="redirect" value={withPrefix('/')} />
+
             <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
               {step > 0 && (
                 <Button
@@ -226,6 +250,7 @@ const SubjectForm = props => {
               )}
 
               <Button
+                disabled={loading}
                 variant="contained"
                 type="submit"
                 sx={{ mt: 4 }}
