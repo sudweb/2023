@@ -1,6 +1,8 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require('dotenv').config();
+
 module.exports = {
   pathPrefix: '/3202',
   siteMetadata: {

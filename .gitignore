@@ -2,5 +2,9 @@ node_modules/
 .cache/
 public
 
+.env
+.env.*
+!.env.dist
+
 # Local Netlify folder
 .netlify
