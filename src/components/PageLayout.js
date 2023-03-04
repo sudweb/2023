@@ -26,6 +26,20 @@ const shortcodes = {
     <CallToAction sx={{ mb: 2, ...sx }} {...props} />
   ),
   a: ({ href, to = href, ...props }) => <Link to={to} {...props} />,
+  Big: ({ sx = {}, ...props }) => (
+    <Typography
+      variant="body1"
+      paragraph
+      sx={{
+        color: 'text.secondary',
+        fontWeight: 600,
+        fontSize: { xs: '1.8rem', md: '2.5rem' },
+        lineHeight: 1.2,
+        ...sx,
+      }}
+      {...props}
+    />
+  ),
   p: props => <Typography variant="body1" paragraph {...props} />,
   h1: props => <Typography variant="h1" gutterBottom {...props} />,
   h2: props => <Typography variant="h2" gutterBottom {...props} />,
