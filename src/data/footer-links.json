@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Épisodes précédents",
+    "items": [
+      {
+        "children": "2011 à Nîmes",
+        "href": "https://sudweb.fr/2011"
+      },
+      {
+        "children": "2012 à Toulouse",
+        "href": "https://sudweb.fr/2012"
+      },
+      {
+        "children": "2013 à Avignon",
+        "href": "https://sudweb.fr/2013"
+      },
+      {
+        "children": "2014 à Toulouse",
+        "href": "https://sudweb.fr/2014"
+      },
+      {
+        "children": "2015 à Montpellier",
+        "href": "https://sudweb.fr/2015"
+      },
+      {
+        "children": "2016 à Bordeaux",
+        "href": "https://sudweb.fr/2016"
+      },
+      {
+        "children": "2017 à Aix-en-Provence",
+        "href": "https://sudweb.fr/2017"
+      },
+      {
+        "children": "2018 à Anduze",
+        "href": "https://sudweb.fr/2018"
+      },
+      {
+        "children": "2019 à Toulouse",
+        "href": "https://sudweb.fr/2019"
+      }
+    ]
+  },
+  {
+    "title": "Pour en savoir plus",
+    "items": [
+      {
+        "children": "Manifeste",
+        "to": "/manifeste"
+      },
+      {
+        "children": "Mentions légales",
+        "to": "/mentions-legales"
+      },
+      {
+        "children": "Code de Conduite",
+        "to": "/code-de-conduite"
+      },
+      {
+        "children": "Témoignages",
+        "to": "/blog/temoignages/"
+      },
+      {
+        "children": "Blog",
+        "to": "/blog"
+      },
+      {
+        "children": "Les vidéos",
+        "to": "https://vimeo.com/sudweb"
+      }
+    ]
+  },
+  {}
+]

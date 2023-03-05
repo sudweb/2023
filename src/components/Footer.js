@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Grid, Link, Typography } from '@mui/material';
-import BorderBox from './BorderBox';
+import { Box, Grid,  Typography } from '@mui/material';
+import { Link } from 'gatsby-material-ui-components';
 
-import editions from '../data/editions.json';
+import BorderBox from './BorderBox';
 import FlatList from './FlatList';
 import Sponsors from './Sponsors';
+import footerLinks from '../data/footer-links.json';
 
 const Footer = ({
   component = 'footer',
@@ -18,31 +19,19 @@ const Footer = ({
     )}
 
     <BorderBox container component={Grid} sx={{ mt: 4 }}>
-      <Grid item xs={12} sm={12} md={4}>
-        <Typography variant="h4">
-          Épisodes précédents
-        </Typography>
+      {footerLinks.map(({ title, items = [] }) => (
+        <Grid item xs={12} sm={12} md={4} key={JSON.stringify({ title, items })}>
+          <Typography variant="h4">{title}</Typography>
 
-        <FlatList
-          items={editions.map(edition => ({
-            key: edition.href,
-            children: (<Link {...edition} />),
-          }))}
-          sx={{ mt: 2, lineHeight: 1.6 }}
-        />
-      </Grid>
-
-      <Grid item xs={12} sm={12} md={4}>
-        <Typography variant="h4">
-          Pour en savoir plus
-        </Typography>
-      </Grid>
-
-      <Grid item xs={12} sm={12} md={4}>
-        <Typography variant="h4">
-          On reste en contact&nbsp;?
-        </Typography>
-      </Grid>
+          <FlatList
+            items={items.map(item => ({
+              key: item.href,
+              children: (<Link {...item} />),
+            }))}
+            sx={{ mt: 2, lineHeight: 1.6 }}
+          />
+        </Grid>
+      ))}
     </BorderBox>
 
     <Box sx={{ mt: 6, textAlign: 'center' }}>
