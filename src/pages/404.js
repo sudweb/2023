@@ -2,6 +2,9 @@ import { Typography } from '@mui/material';
 import React from 'react';
 
 import PageLayout from '../components/PageLayout';
+import Title from '../components/Title';
+
+export const Head = () => <Title />;
 
 const NotFound = props => (
   <PageLayout

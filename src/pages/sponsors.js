@@ -12,6 +12,7 @@ import PageLayout from '../components/PageLayout';
 import BorderBox from '../components/BorderBox';
 import SimpleTextField from '../components/SimpleTextField';
 import CallToAction from '../components/CallToAction';
+import Title from '../components/Title';
 
 const required = true;
 
@@ -21,6 +22,8 @@ const titles = {
   'contact-company': 'votre entreprise',
   'contact-message': 'votre message',
 };
+
+export const Head = () => <Title />;
 
 const ContactForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();

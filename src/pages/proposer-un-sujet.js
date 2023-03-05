@@ -16,6 +16,7 @@ import BorderBox from '../components/BorderBox';
 import SimpleTextField from '../components/SimpleTextField';
 import SimpleRadioField from '../components/SimpleRadioField';
 import CallToAction from '../components/CallToAction';
+import Title from '../components/Title';
 
 const required = true;
 
@@ -40,6 +41,8 @@ const titles = {
   'speaker-expenses': 'vos besoins de prise en charge',
   'speaker-coaching': 'votre souhait d\'être accompagné ou non',
 };
+
+export const Head = () => <Title />;
 
 const SubjectForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();
