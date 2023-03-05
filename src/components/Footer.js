@@ -18,20 +18,22 @@ const Footer = ({
       <Sponsors />
     )}
 
-    <BorderBox container component={Grid} sx={{ mt: 4 }}>
-      {footerLinks.map(({ title, items = [] }) => (
-        <Grid item xs={12} sm={12} md={4} key={JSON.stringify({ title, items })}>
-          <Typography variant="h4">{title}</Typography>
+    <BorderBox sx={{ mt: 4 }}>
+      <Grid container spacing={4}>
+        {footerLinks.map(({ title, items = [] }) => (
+          <Grid item xs={12} sm={12} md={4} key={JSON.stringify({ title, items })}>
+            <Typography variant="h4">{title}</Typography>
 
-          <FlatList
-            items={items.map(item => ({
-              key: item.href,
-              children: (<Link {...item} />),
-            }))}
-            sx={{ mt: 2, lineHeight: 1.6 }}
-          />
-        </Grid>
-      ))}
+            <FlatList
+              items={items.map(item => ({
+                key: item.href,
+                children: (<Link {...item} />),
+              }))}
+              sx={{ mt: 2, lineHeight: 1.6 }}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </BorderBox>
 
     <Box sx={{ mt: 6, textAlign: 'center' }}>
