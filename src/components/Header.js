@@ -99,7 +99,7 @@ const Header = ({
         </Box>
       )}
 
-      {comeback && prelude && (
+      {prelude && (
         <Container maxWidth="lg">
           <Typography
             sx={{
@@ -115,7 +115,8 @@ const Header = ({
               mt: 5,
             }}
           >
-            {prelude}
+            Après 3 ans d’absence, <Link href="/blog/">Sud Web revient</Link> et
+            pose de nouveau ses valises dans la ville rose.
           </Typography>
         </Container>
       )}
