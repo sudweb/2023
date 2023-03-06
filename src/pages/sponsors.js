@@ -73,8 +73,8 @@ const ContactForm = props => {
         >
           <Typography variant="body1" paragraph sx={{ fontWeight: 500 }}>
             Vous souhaitez soutenir Sud Web pour sa prochaine édition&nbsp;?
-            Contactez-nous et nous verrons ensemble comment vous pourrez nous
-            aider.
+            Contactez-nous et nous verrons ensemble comment nous pourrons
+            établir un partenariat.
           </Typography>
 
           <SimpleTextField
