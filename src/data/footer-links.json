@@ -52,10 +52,6 @@
         "to": "/mentions-legales"
       },
       {
-        "children": "Code de Conduite",
-        "to": "/code-de-conduite"
-      },
-      {
         "children": "Témoignages",
         "to": "/blog/temoignages/"
       },
