@@ -57,7 +57,7 @@
       },
       {
         "children": "Blog",
-        "to": "/blog"
+        "href": "/blog"
       },
       {
         "children": "Les vidéos",
