@@ -7,7 +7,14 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const makeTitle = content => ({ title: [{ text: { content } }] });
 const makeText = content => ({ rich_text: [{ text: { content } }] });
 
-const base64Content = data => Buffer.from(Object.values(data).join('\n\n')).toString('base64');
+const base64Content = (data, fields = Object.keys(data)) => {
+  const output = Object.entries(data)
+    .filter(([field, value]) => fields.includes(field))
+    .map(([field, value]) => value)
+    .join('\n\n');
+
+  return Buffer.from(output).toString('base64')
+};
 
 export default async (req, res) => {
   const { body } = req;
@@ -32,7 +39,10 @@ export default async (req, res) => {
     sender: { name: 'Sud Web 2023', email: 'orateurs@sudweb.fr ' },
     to: [{ name: data['speaker-name'], email: data['speaker-email'] }],
     attachment: [{
-      content: base64Content(data),
+      content: base64Content(
+        data,
+        ['conf-title', 'conf-format', 'conf-description', 'conf-envy', 'speaker-help']
+      ),
       name: 'proposition.txt',
     }],
     subject: 'Sud Web 2023 - Merci pour votre proposition',
