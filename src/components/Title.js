@@ -6,7 +6,14 @@ const Title = React.forwardRef(({ value }, ref) => {
   const title = value ? `SudWeb - ${value}` : siteMetadata.title;
 
   return (
-    <title ref={ref}>{title}</title>
+    <>
+      <title ref={ref}>{title}</title>
+      <meta
+        name="description"
+        content={`La conférence Web surtout Humaine revient !
+Après 3 ans d’absence, Sud Web revient et pose de nouveau ses valises dans la ville rose.`}
+      />
+    </>
   );
 });
 
