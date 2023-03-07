@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const sendEmail = async (params = {}) => {
   const response = await fetch(
     'https://api.sendinblue.com/v3/smtp/email',
