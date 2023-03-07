@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     'gatsby-theme-material-ui-top-layout',
     'gatsby-plugin-material-ui',
-    'gatsby-plugin-netlify-cms',
+    // 'gatsby-plugin-netlify-cms',
     'gatsby-plugin-netlify',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
