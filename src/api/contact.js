@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client';
 import cleanURL from './clean-url';
+import sendEmail from './send-email';
 
 const dbId = process.env.DBID_CONTACT;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -18,6 +19,25 @@ export default async (req, res) => {
     Entreprise: makeText(data['contact-company']),
     Message: makeText(data['contact-message']),
   };
+
+  const emailContent = {
+    sender: { name: 'Sud Web 2023', email: 'sponsors@sudweb.fr ' },
+    to: [{ name: data['contact-name'], email: data['contact-email'] }],
+    subject: 'Sud Web 2023 - Merci pour votre message',
+    htmlContent: `<strong style="font-size: 1.1em">Merci pour votre message</strong>
+<p>Nous allons vous recontacter très rapidement pour discuter des modalités d’un partenariat.</p>`,
+
+    textContent: `Merci pour votre message
+
+Nous allons vous recontacter très rapidement pour discuter des modalités d’un partenariat.`,
+  };
+
+  try {
+    const emailResponse = await sendEmail(emailContent);
+    console.log(emailResponse); // eslint-disable-line no-console
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+  }
 
   let error;
   try {

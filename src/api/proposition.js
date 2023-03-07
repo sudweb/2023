@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client';
 import cleanURL from './clean-url';
+import sendEmail from './send-email';
 
 const dbId = process.env.DBID_CONF;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -24,6 +25,34 @@ export default async (req, res) => {
     Accompagnement: { checkbox: (data['speaker-coaching'] === 'true') },
     'Besoin d\'aide': makeText(data['speaker-help']),
   };
+
+  const emailContent = {
+    sender: { name: 'Sud Web 2023', email: 'orateurs@sudweb.fr ' },
+    to: [{ name: data['speaker-name'], email: data['speaker-email'] }],
+    subject: 'Sud Web 2023 - Merci pour votre proposition',
+    htmlContent: `<strong style="font-size: 1.1em">Merci pour votre proposition</strong>
+<p>Nous allons étudier attentivement toutes les propositions et nous reviendrons vers vous avec une réponse d’ici mi avril.</p>
+<p>Vous avez la possibilité de soumettre plusieurs sujets.</p>
+<p>Si votre conférence est retenue, nous vous recontacterons pour organiser la suite.</p>
+<p>En espérant vous voir à Sud Web, quelque soit le résultat.</p>`,
+
+    textContent: `Merci pour votre proposition
+
+Nous allons étudier attentivement toutes les propositions et nous reviendrons vers vous avec une réponse d’ici mi avril.
+
+Vous avez la possibilité de soumettre plusieurs sujets.
+
+Si votre conférence est retenue, nous vous recontacterons pour organiser la suite.
+
+En espérant vous voir à Sud Web, quelque soit le résultat.`,
+  };
+
+  try {
+    const emailResponse = await sendEmail(emailContent);
+    console.log('emailResponse', emailResponse); // eslint-disable-line no-console
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+  }
 
   let error;
   try {
