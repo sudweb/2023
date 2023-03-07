@@ -26,7 +26,7 @@ const Footer = ({
 
             <FlatList
               items={items.map(item => ({
-                key: item.href,
+                key: item.href || item.to,
                 children: (<Link {...item} />),
               }))}
               sx={{ mt: 2, lineHeight: 1.6 }}

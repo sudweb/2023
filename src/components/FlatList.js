@@ -8,8 +8,8 @@ const FlatList = ({ sx = {}, items = [], ...props }) => (
     sx={{ m: 0, p: 0, listStyleType: 'none', ...sx }}
     {...props}
   >
-    {items.map(item => (
-      <Box component="li" {...item} />
+    {items.map(({ key, ...item }) => (
+      <Box key={key} component="li" {...item} />
     ))}
   </Box>
 );
