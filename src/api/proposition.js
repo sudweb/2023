@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+import cleanURL from './clean-url';
 
 const dbId = process.env.DBID_CONF;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -29,15 +30,15 @@ export default async (req, res) => {
     const createPaged = await notion.pages.create({ parent, properties });
 
     if (createPaged) {
-      return (data.redirect === 'false')
+      return (data.redirect.toString() === 'false')
         ? res.status(201).json({ created_time: createPaged.created_time })
-        : res.redirect(`${data.redirect}merci/`);
+        : res.redirect(cleanURL(data.redirect, 'merci/'));
     }
   } catch (err) {
     error = err;
   }
 
-  return (data.redirect === 'false')
+  return (data.redirect.toString() === 'false')
     ? res.status(500).json({ error })
-    : res.redirect(`${data.redirect || '/'}erreur/?e=${encodeURIComponent(JSON.stringify(Object.values(data)))}`);
+    : res.redirect(cleanURL(data.redirect || '/', `erreur/?e=${encodeURIComponent(JSON.stringify(Object.values(data)))}`));
 };

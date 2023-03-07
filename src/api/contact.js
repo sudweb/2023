@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+import cleanURL from './clean-url';
 
 const dbId = process.env.DBID_CONTACT;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -25,7 +26,7 @@ export default async (req, res) => {
     if (createPaged) {
       return (data.redirect === 'false')
         ? res.status(201).json({ created_time: createPaged.created_time })
-        : res.redirect(`${data.redirect || '/'}merci-contact/`);
+        : res.redirect(cleanURL(data.redirect, 'merci-contact/'));
     }
   } catch (err) {
     error = err;
@@ -33,5 +34,5 @@ export default async (req, res) => {
 
   return (data.redirect === 'false')
     ? res.status(500).json({ error })
-    : res.redirect(`${data.redirect || '/'}erreur/?e=${encodeURIComponent(JSON.stringify(Object.values(data)))}`);
+    : res.redirect(cleanURL(data.redirect || '/', `erreur/?e=${encodeURIComponent(JSON.stringify(Object.values(data)))}`));
 };
