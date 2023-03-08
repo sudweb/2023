@@ -47,7 +47,7 @@ export default async (req, res) => {
     subject: 'Sud Web 2023 - Merci pour votre proposition',
     htmlContent: `<p style="font-weight: bold; font-size: 1.1em">Merci pour votre proposition</p>
 <p>Nous allons étudier attentivement toutes les propositions courant avril. Si votre conférence est retenue, nous reviendrons vers vous pour organiser la suite.</p>
-<p>L’équipe se tient à votre disposition pour toutes questions : <a href="mailto:contact@sudweb.fr">contact@sudweb.fr</a></p>
+<p>L’équipe se tient à votre disposition pour toutes questions : <a href="mailto:orateurs@sudweb.fr">orateurs@sudweb.fr</a></p>
 <p>Vous trouverez ci-dessous le récapitulatif de votre proposition.</p>
 <p>En espérant vous voir à Sud Web :)</p>
 <hr />
@@ -58,7 +58,7 @@ export default async (req, res) => {
 
 Nous allons étudier attentivement toutes les propositions courant avril. Si votre conférence est retenue, nous reviendrons vers vous pour organiser la suite.
 
-L’équipe se tient à votre disposition pour toutes questions : contact@sudweb.fr
+L’équipe se tient à votre disposition pour toutes questions : orateurs@sudweb.fr
 
 Vous trouverez ci-dessous le récapitulatif de votre proposition.
 
