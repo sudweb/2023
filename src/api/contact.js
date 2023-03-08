@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { cleanURL, makeText, makeTitle, sendEmail } from './helpers';
+import { cleanURL, makeText, makeTitle, sendEmail } from '../helpers';
 
 const dbId = process.env.DBID_CONTACT;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });

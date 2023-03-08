@@ -8,7 +8,7 @@ import {
   makeText,
   makeTitle,
   sendEmail,
-} from './helpers';
+} from '../helpers';
 
 const dbId = process.env.DBID_CONF;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
