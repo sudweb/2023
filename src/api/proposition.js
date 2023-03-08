@@ -44,10 +44,10 @@ export default async (req, res) => {
   const emailContent = {
     sender: { name: 'Sud Web 2023', email: 'orateurs@sudweb.fr ' },
     to: [{ name: data['speaker-name'], email: data['speaker-email'] }],
-    attachment: [{
-      content: base64(recap),
-      name: 'proposition.txt',
-    }],
+    // attachment: [{
+    //   content: base64(recap),
+    //   name: 'proposition.txt',
+    // }],
     subject: 'Sud Web 2023 - Merci pour votre proposition',
     htmlContent: `<p style="font-weight: bold; font-size: 1.1em">Merci pour votre proposition</p>
 <p>Nous allons étudier attentivement toutes les propositions courant avril. Si votre conférence est retenue, nous reviendrons vers vous pour organiser la suite.</p>
