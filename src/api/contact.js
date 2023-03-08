@@ -23,7 +23,7 @@ export default async (req, res) => {
     sender: { name: 'Sud Web 2023', email: 'sponsors@sudweb.fr ' },
     to: [{ name: data['contact-name'], email: data['contact-email'] }],
     subject: 'Sud Web 2023 - Merci pour votre message',
-    htmlContent: `<strong style="font-size: 1.1em">Merci pour votre message</strong>
+    htmlContent: `<p style="font-weight: bold; font-size: 1.1em">Merci pour votre message</p>
 <p>Nous allons vous recontacter très rapidement pour discuter des modalités d’un partenariat.</p>`,
 
     textContent: `Merci pour votre message
