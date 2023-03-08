@@ -1,10 +1,8 @@
 import { Client } from '@notionhq/client';
-import { cleanURL, sendEmail } from './helpers';
+import { cleanURL, makeText, makeTitle, sendEmail } from './helpers';
 
 const dbId = process.env.DBID_CONTACT;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const makeTitle = content => ({ title: [{ text: { content } }] });
-const makeText = content => ({ rich_text: [{ text: { content } }] });
 
 export default async (req, res) => {
   const { body } = req;
