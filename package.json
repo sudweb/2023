@@ -8,6 +8,7 @@
     "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve --prefix-paths",
     "clean": "gatsby clean",
+    "test": "vitest",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -37,7 +38,8 @@
     "url-join": "^5.0.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^19.0.4"
+    "eslint-config-airbnb": "^19.0.4",
+    "vitest": "^0.29.2"
   },
   "peerDependencies": {
     "dotenv": "*",
