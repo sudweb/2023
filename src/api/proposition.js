@@ -1,4 +1,6 @@
 import { Client } from '@notionhq/client';
+import { encode } from 'html-entities';
+
 import cleanURL from './clean-url';
 import sendEmail from './send-email';
 
@@ -7,14 +9,13 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const makeTitle = content => ({ title: [{ text: { content } }] });
 const makeText = content => ({ rich_text: [{ text: { content } }] });
 
-const base64Content = (data, fields = Object.keys(data)) => {
-  const output = Object.entries(data)
-    .filter(([field, value]) => fields.includes(field))
-    .map(([field, value]) => value)
-    .join('\n\n');
+const base64 = str => Buffer.from(str).toString('base64');
 
-  return Buffer.from(output).toString('base64')
-};
+const makeRecap = (data, fields = Object.keys(data)) =>
+  Object.entries(data)
+    .filter(([field]) => fields.includes(field))
+    .map(({ 1: value }) => value)
+    .join('\n\n');
 
 export default async (req, res) => {
   const { body } = req;
@@ -35,32 +36,43 @@ export default async (req, res) => {
     'Besoin d\'aide': makeText(data['speaker-help']),
   };
 
+  const recap = makeRecap(
+    data,
+    ['conf-title', 'conf-format', 'conf-description', 'conf-envy', 'speaker-help'],
+  );
+
   const emailContent = {
     sender: { name: 'Sud Web 2023', email: 'orateurs@sudweb.fr ' },
     to: [{ name: data['speaker-name'], email: data['speaker-email'] }],
     attachment: [{
-      content: base64Content(
-        data,
-        ['conf-title', 'conf-format', 'conf-description', 'conf-envy', 'speaker-help']
-      ),
+      content: base64(recap),
       name: 'proposition.txt',
     }],
     subject: 'Sud Web 2023 - Merci pour votre proposition',
-    htmlContent: `<strong style="font-size: 1.1em">Merci pour votre proposition</strong>
-<p>Nous allons étudier attentivement toutes les propositions et nous reviendrons vers vous avec une réponse d’ici mi avril.</p>
-<p>Vous avez la possibilité de soumettre plusieurs sujets.</p>
-<p>Si votre conférence est retenue, nous vous recontacterons pour organiser la suite.</p>
-<p>En espérant vous voir à Sud Web, quelque soit le résultat.</p>`,
+    htmlContent: `<p style="font-weight: bold; font-size: 1.1em">Merci pour votre proposition</p>
+<p>Nous allons étudier attentivement toutes les propositions courant avril. Si votre conférence est retenue, nous reviendrons vers vous pour organiser la suite.</p>
+<p>L’équipe se tient à votre disposition pour toutes questions : <a href="mailto:contact@sudweb.fr">contact@sudweb.fr</a></p>
+<p>Vous trouverez ci-dessous le récapitulatif de votre proposition.</p>
+<p>En espérant vous voir à Sud Web :)</p>
+<hr />
+<p>Récapitulatif</p>
+<pre>${encode(recap)}</pre>`,
 
     textContent: `Merci pour votre proposition
 
-Nous allons étudier attentivement toutes les propositions et nous reviendrons vers vous avec une réponse d’ici mi avril.
+Nous allons étudier attentivement toutes les propositions courant avril. Si votre conférence est retenue, nous reviendrons vers vous pour organiser la suite.
 
-Vous avez la possibilité de soumettre plusieurs sujets.
+L’équipe se tient à votre disposition pour toutes questions : contact@sudweb.fr
 
-Si votre conférence est retenue, nous vous recontacterons pour organiser la suite.
+Vous trouverez ci-dessous le récapitulatif de votre proposition.
 
-En espérant vous voir à Sud Web, quelque soit le résultat.`,
+En espérant vous voir à Sud Web :)
+
+----
+
+Récapitulatif :
+
+${recap}`,
   };
 
   try {
