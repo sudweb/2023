@@ -2,20 +2,13 @@ import { Client } from '@notionhq/client';
 import { encode } from 'html-entities';
 
 import cleanURL from './clean-url';
+import { makeRecap } from './helpers';
 import sendEmail from './send-email';
 
 const dbId = process.env.DBID_CONF;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const makeTitle = content => ({ title: [{ text: { content } }] });
 const makeText = content => ({ rich_text: [{ text: { content } }] });
-
-const base64 = str => Buffer.from(str).toString('base64');
-
-const makeRecap = (data, fields = Object.keys(data)) =>
-  Object.entries(data)
-    .filter(([field]) => fields.includes(field))
-    .map(({ 1: value }) => value)
-    .join('\n\n');
 
 export default async (req, res) => {
   const { body } = req;
@@ -38,15 +31,21 @@ export default async (req, res) => {
 
   const recap = makeRecap(
     data,
-    ['conf-title', 'conf-format', 'conf-description', 'conf-envy', 'speaker-help'],
+    [
+      ['Titre de votre conférence :\n', 'conf-title'],
+      ['Durée : ', 'conf-format'],
+      ['Description :\n', 'conf-description'],
+      ['Pour donner envie (non rendu public) :\n', 'conf-envy'],
+      ['Demande d\'aide (non rendu public) :\n', 'speaker-help'],
+    ],
   );
 
   const emailContent = {
     sender: { name: 'Sud Web 2023', email: 'orateurs@sudweb.fr ' },
     to: [{ name: data['speaker-name'], email: data['speaker-email'] }],
     // attachment: [{
-    //   content: base64(recap),
-    //   name: 'proposition.txt',
+    //   content: Buffer.from(recap).toString('base64');,
+    //   name: 'recapitulatif.txt',
     // }],
     subject: 'Sud Web 2023 - Merci pour votre proposition',
     htmlContent: `<p style="font-weight: bold; font-size: 1.1em">Merci pour votre proposition</p>
@@ -55,8 +54,8 @@ export default async (req, res) => {
 <p>Vous trouverez ci-dessous le récapitulatif de votre proposition.</p>
 <p>En espérant vous voir à Sud Web :)</p>
 <hr />
-<p>Récapitulatif</p>
-<pre>${encode(recap)}</pre>`,
+<p style="font-weight: bold;">Récapitulatif</p>
+<blockquote type="cite">${encode(recap)}</blockquote>`,
 
     textContent: `Merci pour votre proposition
 
