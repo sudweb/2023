@@ -46,4 +46,11 @@ export const sendEmail = async (params = {}) => {
   return response;
 };
 
+export const makeSelect = (value, validValues = [value]) => {
+  if (validValues.includes(value)) {
+    return { select: { name: value } };
+  }
+  return { select: { name: '' } };
+};
+
 export default {};

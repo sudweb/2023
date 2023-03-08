@@ -1,10 +1,29 @@
 import { Client } from '@notionhq/client';
 import { encode } from 'html-entities';
 
-import { cleanURL, makeRecap, makeText, makeTitle, sendEmail } from './helpers';
+import {
+  cleanURL,
+  makeRecap,
+  makeSelect,
+  makeText,
+  makeTitle,
+  sendEmail,
+} from './helpers';
 
 const dbId = process.env.DBID_CONF;
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
+
+const EXPENSES_VALUES = [
+  'Déplacement + hébergement',
+  'Déplacement',
+  'Hébergement',
+  'Rien',
+];
+
+const FORMAT_VALUES = [
+  '20 minutes',
+  '5 minutes',
+];
 
 export default async (req, res) => {
   const { body } = req;
@@ -14,13 +33,13 @@ export default async (req, res) => {
 
   const properties = {
     Titre: makeTitle(data['conf-title']),
-    Format: { select: { name: data['conf-format'] } },
+    Format: makeSelect(data['conf-format'], FORMAT_VALUES),
     'Donner envie': makeText(data['conf-envy']),
     Description: makeText(data['conf-description']),
     Nom: makeText(data['speaker-name']),
     'E-mail': { email: data['speaker-email'] },
     Où: makeText(data['speaker-location']),
-    Défraiement: { select: { name: data['speaker-expenses'] || 'Rien' } },
+    Défraiement: makeSelect(data['speaker-expenses'], EXPENSES_VALUES),
     Accompagnement: { checkbox: (data['speaker-coaching'] === 'true') },
     'Besoin d\'aide': makeText(data['speaker-help']),
   };
