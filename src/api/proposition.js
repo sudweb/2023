@@ -30,9 +30,10 @@ export default async (req, res) => {
     [
       ['Titre de votre conférence :\n', 'conf-title'],
       ['Durée : ', 'conf-format'],
-      ['Description :\n', 'conf-description'],
       ['Pour donner envie (non rendu public) :\n', 'conf-envy'],
+      ['Description :\n', 'conf-description'],
       ['Demande d\'aide (non rendu public) :\n', 'speaker-help'],
+      ['Demande de prise en charge : ', 'speaker-expenses'],
     ],
   );
 
@@ -51,7 +52,7 @@ export default async (req, res) => {
 <p>En espérant vous voir à Sud Web :)</p>
 <hr />
 <p style="font-weight: bold;">Récapitulatif</p>
-<blockquote type="cite">${encode(recap)}</blockquote>`,
+<blockquote type="cite" style="white-space: pre-wrap;">${encode(recap)}</blockquote>`,
 
     textContent: `Merci pour votre proposition
 

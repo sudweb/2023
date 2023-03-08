@@ -13,17 +13,17 @@ export const makeText = content => ({ rich_text: [{ text: { content } }] });
 export const makeRecap = (data, fields = Object.keys(data)) => {
   const content = fields.map(field => {
     if (typeof field === 'string') {
-      return data[field];
+      return data[field]?.trim?.();
     }
 
     const [label, value] = field;
     return [
       label,
-      data[value],
+      data[value]?.trim?.(),
     ].join('');
   });
 
-  return content.filter(Boolean).join('\n');
+  return content.filter(Boolean).join('\n---\n');
 };
 
 export const sendEmail = async (params = {}) => {
