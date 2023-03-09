@@ -42,7 +42,7 @@ const titles = {
   'speaker-coaching': 'votre souhait d\'être accompagné ou non',
 };
 
-export const Head = () => <Title />;
+export const Head = () => <Title value="Proposer un sujet" />;
 
 const SubjectForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();

@@ -23,7 +23,7 @@ const titles = {
   'contact-message': 'votre message',
 };
 
-export const Head = () => <Title />;
+export const Head = () => <Title value="Devenez sponsor" />;
 
 const ContactForm = props => {
   const { register, handleSubmit, formState: { errors } } = useForm();
