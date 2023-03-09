@@ -4,10 +4,10 @@
 require('dotenv').config();
 
 module.exports = {
-  pathPrefix: '/3202',
+  pathPrefix: '/2023',
   siteMetadata: {
     title: 'SudWeb - La conférence Web surtout Humaine',
-    siteUrl: 'https://www.sudweb.fr/3202',
+    siteUrl: 'https://www.sudweb.fr/2023/',
   },
   plugins: [
     'gatsby-theme-material-ui-top-layout',
