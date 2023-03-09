@@ -3,6 +3,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 const TEXT_1 = '#000807';
 const TEXT_2 = '#59344F';
 
+// const theme = responsiveFontSizes(createTheme({
 const theme = responsiveFontSizes(createTheme({
   palette: {
     primary: {
@@ -26,15 +27,15 @@ const theme = responsiveFontSizes(createTheme({
       'Arial',
       '"sans-serif"',
     ].join(','),
-    h2: {
+    h1: {
       fontSize: '2.5rem',
       fontWeight: 600,
     },
-    h3: {
+    h2: {
       fontSize: '1.875rem',
       fontWeight: 500,
     },
-    h4: {
+    h3: {
       fontSize: '1.5625rem',
       fontWeight: 500,
     },
@@ -83,7 +84,7 @@ const theme = responsiveFontSizes(createTheme({
       },
     },
   },
-}));
+}), { disableAlign: true });
 
 // window.theme = theme;
 

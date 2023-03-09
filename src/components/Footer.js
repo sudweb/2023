@@ -22,7 +22,7 @@ const Footer = ({
       <Grid container spacing={4}>
         {footerLinks.map(({ title, items = [] }) => (
           <Grid item xs={12} sm={12} md={4} key={JSON.stringify({ title, items })}>
-            <Typography variant="h4">{title}</Typography>
+            <Typography variant="h3">{title}</Typography>
 
             <FlatList
               items={items.map(item => ({

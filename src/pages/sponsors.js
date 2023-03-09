@@ -61,7 +61,7 @@ const ContactForm = props => {
   return (
     <PageLayout title="Devenez sponsor" {...props}>
       <BorderBox variant="simple">
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h1" gutterBottom>
           Devenez sponsor
         </Typography>
 

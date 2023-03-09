@@ -17,7 +17,7 @@ const Sponsors = () => {
           boxShadow: `4px 4px 0 ${baseTheme.palette.text.secondary}`,
         }}
       >
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h1" component="h2" gutterBottom>
           Devenez sponsor
         </Typography>
 
@@ -25,7 +25,7 @@ const Sponsors = () => {
           Vous souhaitez devenir partenaire&nbsp;? <Link to="/sponsors">Contactez-nous pour les modalités.</Link>
         </Typography>
 
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h1" component="h2" gutterBottom>
           Nos partenaires
         </Typography>
 

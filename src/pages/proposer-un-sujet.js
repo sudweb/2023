@@ -81,7 +81,7 @@ const SubjectForm = props => {
     <PageLayout title="Proposer un sujet" {...props}>
       {!runtime && inputGlobalStyles}
       <BorderBox variant="simple">
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h1" gutterBottom>
           Appel à sujets {step > 0 && `(${step}/2)`}
         </Typography>
 
@@ -98,7 +98,7 @@ const SubjectForm = props => {
               ci-dessous avant le vendredi 07 avril 23h59.
             </Typography>
 
-            <Typography variant="h3" component="h2" gutterBottom>
+            <Typography variant="h2" gutterBottom>
               Votre conférence
             </Typography>
 
@@ -164,7 +164,7 @@ const SubjectForm = props => {
               mt: 8,
             }}
           >
-            <Typography variant="h3" component="h2" gutterBottom>
+            <Typography variant="h2" gutterBottom>
               Vous
             </Typography>
 

@@ -11,7 +11,6 @@ const Header = ({
   component = 'header',
   comeback = true,
   prelude = '',
-  h1,
   pageContext,
   ...props
 }) => {
@@ -19,6 +18,8 @@ const Header = ({
     typography: { pxToRem },
     palette,
   } = useTheme();
+
+  const isHomePage = Boolean(pageContext?.frontmatter?.home);
 
   return (
     <Box component={component} {...props}>
@@ -33,7 +34,7 @@ const Header = ({
 
         <Container maxWidth="md">
           <Typography
-            component={h1 ? 'h1' : Box}
+            component={isHomePage ? 'h1' : Box}
             sx={{
               fontFamily: 'Oraqle Script',
               fontSize: { xs: '7rem', sm: '14rem', md: '18rem' },
