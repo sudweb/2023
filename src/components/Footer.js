@@ -37,7 +37,7 @@ const Footer = ({
     </BorderBox>
 
     <Box sx={{ mt: 6, textAlign: 'center' }}>
-      Contribué sur <Link href="https://github.com/sudweb">github</Link> et
+      Contribué sur <Link href="https://github.com/sudweb/2023">github</Link> et
       gracieusement hébergé par <Link href="https://alwaysdata.com">alwaysdata</Link>
     </Box>
   </Box>
