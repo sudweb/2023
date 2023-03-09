@@ -5,6 +5,8 @@ import { Link } from 'gatsby-material-ui-components';
 import BorderBox from './BorderBox';
 import MainNav from './MainNav';
 
+const BLOG_LINK = 'https://sudweb.fr/blog/2023/quand-est-ce-que-vous-refaites-sudweb/';
+
 const Header = ({
   component = 'header',
   comeback = true,
@@ -115,7 +117,7 @@ const Header = ({
               mt: 5,
             }}
           >
-            Après 3 ans d’absence, <Link href="/blog/">Sud Web revient</Link> et
+            Après 3 ans d’absence, <Link to={BLOG_LINK}>Sud Web revient</Link> et
             pose de nouveau ses valises dans la ville rose.
           </Typography>
         </Container>
