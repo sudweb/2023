@@ -10,6 +10,14 @@ export default async (req, res) => {
   const data = typeof body === 'string' ? JSON.parse(body) : body;
   const parent = { type: 'database_id', database_id: dbId };
 
+  if (data['contact-trap']) {
+    console.info(`\n\nHoneypot:\n\n${JSON.stringify(data, null, 2)}\n\n`); // eslint-disable-line no-console
+
+    return (data.redirect === 'false')
+      ? res.status(500).json({ error: 'honeypot' })
+      : res.redirect(cleanURL(data.redirect || '/', `erreur/?e=${encodeURIComponent(JSON.stringify(Object.values(data)))}`));
+  }
+
   const properties = {
     Nom: makeTitle(data['contact-name']),
     'E-mail': { email: data['contact-email'] },
