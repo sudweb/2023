@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Client } from '@notionhq/client';
 import { encode } from 'html-entities';
 
@@ -89,6 +90,26 @@ Récapitulatif :
 
 ${recap}`,
   };
+
+  if (process.env.SLACK_WEBHOOK) {
+    const text = [
+      `📢 <mailto:${data['speaker-email']}|${data['speaker-name']}> vient de proposer le sujet :`,
+      `> ${data['conf-title']} _(${data['conf-format']})_`,
+    ].join('\n');
+
+    try {
+      fetch(
+        process.env.SLACK_WEBHOOK,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text }),
+        },
+      );
+    } catch (err) {
+      console.error(err); // eslint-disable-line no-console
+    }
+  }
 
   try {
     const emailResponse = await sendEmail(emailContent);
