@@ -3,8 +3,10 @@
  */
 require('dotenv').config();
 
+const pathPrefix = process.env.PATH_PREFIX || '/2023';
+
 module.exports = {
-  pathPrefix: '/2023',
+  pathPrefix,
   siteMetadata: {
     title: 'SudWeb - La conférence Web surtout Humaine',
     siteUrl: 'https://www.sudweb.fr/2023/',
