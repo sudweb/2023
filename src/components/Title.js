@@ -4,7 +4,7 @@ import socialCard from '../assets/social-card.png';
 
 const Title = React.forwardRef(({ value }, ref) => {
   const siteMetadata = useSiteMetadata();
-  const title = value ? `SudWeb - ${value}` : siteMetadata.title;
+  const title = value ? `SudWeb 2023 - ${value}` : siteMetadata.title;
 
   return (
     <>
