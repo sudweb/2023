@@ -17,7 +17,18 @@ module.exports = {
     // 'gatsby-plugin-netlify-cms',
     'gatsby-plugin-netlify',
     'gatsby-plugin-image',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: [
+          '/code-de-conduite',
+          '/erreur',
+          '/example',
+          '/merci-contact',
+          '/merci',
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
