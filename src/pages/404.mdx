@@ -5,7 +5,7 @@ title: Page non trouvée (erreur 404)
 ---
 
 import Title from '../components/Title.js';
-export const Head = props => <Title value={props.pageContext.frontmatter.title} />;
+export const Head = props => <Title value={props?.pageContext?.frontmatter?.title} />;
 export { default } from '../components/PageLayout.js';
 
   <Cadre>
