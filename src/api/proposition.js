@@ -91,26 +91,6 @@ Récapitulatif :
 ${recap}`,
   };
 
-  if (process.env.SLACK_WEBHOOK) {
-    const text = [
-      `📢 <mailto:${data['speaker-email']}|${data['speaker-name']}> vient de proposer le sujet :`,
-      `> ${data['conf-title']} _(${data['conf-format']})_`,
-    ].join('\n');
-
-    try {
-      fetch(
-        process.env.SLACK_WEBHOOK,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text }),
-        },
-      );
-    } catch (err) {
-      console.error(err); // eslint-disable-line no-console
-    }
-  }
-
   try {
     const emailResponse = await sendEmail(emailContent);
     console.log('emailResponse', emailResponse); // eslint-disable-line no-console
@@ -118,17 +98,42 @@ ${recap}`,
     console.error(err); // eslint-disable-line no-console
   }
 
+  let notionLink;
   let error;
-  try {
-    const createPaged = await notion.pages.create({ parent, properties });
+  let createPaged;
 
-    if (createPaged) {
-      return (data.redirect.toString() === 'false')
-        ? res.status(201).json({ created_time: createPaged.created_time })
-        : res.redirect(cleanURL(data.redirect, 'merci/'));
-    }
+  try {
+    createPaged = await notion.pages.create({ parent, properties });
+    notionLink = createPaged?.url;
   } catch (err) {
     error = err;
+  }
+
+  if (process.env.SLACK_WEBHOOK) {
+    const text = [
+      `📢 *<mailto:${data['speaker-email']}|${data['speaker-name']}>* vient de proposer le sujet :`,
+      `> - *Titre* : ${data['conf-title']}`,
+      `> - *Lien* : ${notionLink}`,
+    ];
+
+    try {
+      fetch(
+        process.env.SLACK_WEBHOOK,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text.join('\n') }),
+        },
+      );
+    } catch (err) {
+      console.error(err); // eslint-disable-line no-console
+    }
+  }
+
+  if (createPaged) {
+    return (data.redirect.toString() === 'false')
+      ? res.status(201).json({ created_time: createPaged.created_time })
+      : res.redirect(cleanURL(data.redirect, 'merci/'));
   }
 
   return (data.redirect.toString() === 'false')
