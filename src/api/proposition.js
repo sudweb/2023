@@ -91,21 +91,25 @@ Récapitulatif :
 ${recap}`,
   };
 
+  let emailResponse;
   try {
-    const emailResponse = await sendEmail(emailContent);
-    console.log('emailResponse', emailResponse); // eslint-disable-line no-console
+    emailResponse = await sendEmail(emailContent);
+    console.log('email sent!'); // eslint-disable-line no-console
   } catch (err) {
     console.error(err); // eslint-disable-line no-console
+    console.log('email response:', emailResponse); // eslint-disable-line no-console
   }
 
-  let notionLink;
   let error;
-  let createPaged;
+  let notionResponse;
+  let notionUrl;
 
   try {
-    createPaged = await notion.pages.create({ parent, properties });
-    notionLink = createPaged?.url;
+    notionResponse = await notion.pages.create({ parent, properties });
+    notionUrl = notionResponse?.url;
   } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+    console.log('notion response:', notionResponse); // eslint-disable-line no-console
     error = err;
   }
 
@@ -113,11 +117,13 @@ ${recap}`,
     const text = [
       `📢 *<mailto:${data['speaker-email']}|${data['speaker-name']}>* vient de proposer le sujet :`,
       `> - *Titre* : ${data['conf-title']}`,
-      `> - *Lien* : ${notionLink}`,
+      `> - *Lien* : ${notionUrl}`,
     ];
 
+    let slackResponse;
+
     try {
-      fetch(
+      slackResponse = await fetch(
         process.env.SLACK_WEBHOOK,
         {
           method: 'POST',
@@ -127,12 +133,15 @@ ${recap}`,
       );
     } catch (err) {
       console.error(err); // eslint-disable-line no-console
+      console.log('slack response:', slackResponse); // eslint-disable-line no-console
     }
+  } else {
+    console.log('No SLACK_WEBHOOK available.'); // eslint-disable-line no-console
   }
 
-  if (createPaged) {
+  if (notionResponse) {
     return (data.redirect.toString() === 'false')
-      ? res.status(201).json({ created_time: createPaged.created_time })
+      ? res.status(201).json({ created_time: notionResponse.created_time })
       : res.redirect(cleanURL(data.redirect, 'merci/'));
   }
 
