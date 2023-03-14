@@ -107,6 +107,7 @@ ${recap}`,
   try {
     notionResponse = await notion.pages.create({ parent, properties });
     notionUrl = notionResponse?.url;
+    console.log('Notion item created:', notionUrl); // eslint-disable-line no-console
   } catch (err) {
     console.error(err); // eslint-disable-line no-console
     console.log('notion response:', notionResponse); // eslint-disable-line no-console
@@ -131,12 +132,13 @@ ${recap}`,
           body: JSON.stringify({ text: text.join('\n') }),
         },
       );
+      console.log('Slack hook called.'); // eslint-disable-line no-console
     } catch (err) {
       console.error(err); // eslint-disable-line no-console
       console.log('slack response:', slackResponse); // eslint-disable-line no-console
     }
   } else {
-    console.log('No SLACK_WEBHOOK available.'); // eslint-disable-line no-console
+    console.log('No SLACK_WEBHOOK defined.'); // eslint-disable-line no-console
   }
 
   if (notionResponse) {
