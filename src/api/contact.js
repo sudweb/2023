@@ -10,7 +10,7 @@ export default async (req, res) => {
   const data = typeof body === 'string' ? JSON.parse(body) : body;
   const parent = { type: 'database_id', database_id: dbId };
 
-  if (data['contact-trap'] || data['contact-company'] === 'google') {
+  if (data['contact-subject'] || data['contact-company'] === 'google') {
     console.log(`\n\nHoneypot:\n\n${JSON.stringify(data, null, 2)}\n\n`); // eslint-disable-line no-console
     return res.status(200).json({ ok: 'pot de miel' });
   }

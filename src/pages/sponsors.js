@@ -103,9 +103,9 @@ const ContactForm = props => {
 
           <Box sx={{ position: 'absolute', height: 0, overflow: 'hidden' }}>
             <SimpleTextField
-              id="contact-trap"
-              {...register('contact-trap')}
-              label="Merci de laisser vide"
+              id="contact-subject"
+              {...register('contact-subject')}
+              label="Merci de ne rien saisir ici"
               inputProps={{ tabIndex: '-1' }}
             />
           </Box>
