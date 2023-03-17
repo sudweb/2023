@@ -37,24 +37,34 @@ export default async (req, res) => {
 Nous allons vous recontacter très rapidement pour discuter des modalités d’un partenariat.`,
   };
 
+  let error;
+  let emailResponse;
+  let notionResponse;
+  let notionUrl;
+
   try {
-    const emailResponse = await sendEmail(emailContent);
-    console.log(emailResponse); // eslint-disable-line no-console
+    emailResponse = await sendEmail(emailContent);
+    console.log('email sent!'); // eslint-disable-line no-console
   } catch (err) {
     console.error(err); // eslint-disable-line no-console
+    console.log('email response:', emailResponse); // eslint-disable-line no-console
+    error = err;
   }
 
-  let error;
   try {
-    const createPaged = await notion.pages.create({ parent, properties });
-
-    if (createPaged) {
-      return (data.redirect === 'false')
-        ? res.status(201).json({ created_time: createPaged.created_time })
-        : res.redirect(cleanURL(data.redirect, 'merci-contact/'));
-    }
+    notionResponse = await notion.pages.create({ parent, properties });
+    notionUrl = notionResponse?.url;
+    console.log('Notion item created:', notionUrl); // eslint-disable-line no-console
   } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+    console.log('notion response:', notionResponse); // eslint-disable-line no-console
     error = err;
+  }
+
+  if (notionResponse) {
+    return (data.redirect === 'false')
+      ? res.status(201).json({ created_time: notionResponse.created_time })
+      : res.redirect(cleanURL(data.redirect, 'merci-contact/'));
   }
 
   return (data.redirect === 'false')
