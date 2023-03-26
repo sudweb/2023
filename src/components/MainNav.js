@@ -9,10 +9,10 @@ const navItems = [
     children: <>Appel à&nbsp;sujets</>,
     to: '/appel-a-sujet',
   },
-  // {
-  //   children: 'Billetterie',
-  //   to: '/billetterie',
-  // },
+  {
+    children: 'Billetterie',
+    to: '/billetterie',
+  },
   {
     children: <>Lieux et comment venir&nbsp;?</>,
     to: '/les-lieux',
