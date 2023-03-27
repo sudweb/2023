@@ -38,7 +38,16 @@ const Billetterie = props => {
             component="a"
             sx={{ mb: 2 }}
             title="Logiciel billetterie en ligne"
-            href="https://weezevent.com/?c=sys_widget"
+            href={[
+              'https://www.weezevent.com/widget_billeterie.php?',
+              'id_evenement=958173',
+              'widget_key=E958173',
+              'locale=fr_FR',
+              `color_primary=${main.substring(1)}`,
+              'code=67229',
+              'width_auto=1',
+              'neo=1',
+            ].join('&')}
             className="weezevent-widget-integration"
             data-src={[
               'https://widget.weezevent.com/ticket/E958173/?',
