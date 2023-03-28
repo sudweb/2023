@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Link, Typography, useTheme } from '@mui/material';
 
 import PageLayout from '../components/PageLayout';
 import BorderBox from '../components/BorderBox';
@@ -33,6 +33,30 @@ const Billetterie = props => {
           Billetterie
         </Typography>
 
+        <Typography variant="body1" paragraph>
+          Oyez, oyez, vous pouvez désormais acheter vos places. Vous avez le choix entre&nbsp;:
+        </Typography>
+
+        <Box component="ul">
+          <Box component="li">le pass 2 jours <em>(conférences du vendredi, la soirée, le forum ouvert du samedi)</em>,</Box>
+          <Box component="li">le pass conférences du vendredi uniquement,</Box>
+          <Box component="li">le pass forum ouvert du samedi uniquement.</Box>
+        </Box>
+
+        <Typography variant="body1" paragraph>
+          Pour ces deux dernières, le ticket pour la soirée n’est pas inclus mais peut
+          être acheté à part.
+        </Typography>
+
+        <Typography variant="body1" paragraph>
+          Comme les années passées, nous avons prévu des billets à tarifs préférentiels
+          pour les étudiant·e·s ainsi que pour les personnes inscrites à Pôle Emploi. Les
+          billets sont disponibles sous réserve de justificatif à envoyer à{' '}
+          <Link href="mailto:contact@sudweb.fr">contact@sudweb.fr</Link>. Si vous ne
+          rentrez pas exactement dans ces cases, mais êtes dans une situation comparable,
+          n'hésitez pas à <Link href="mailto:contact@sudweb.fr">nous contacter</Link> et
+          nous en discuterons.
+        </Typography>
         <Box>
           <CallToAction
             component="a"
