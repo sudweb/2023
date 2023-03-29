@@ -129,6 +129,7 @@ const SubjectForm = props => {
               minRows={5}
               rows={runtime ? undefined : 5}
               required={required}
+              maxLength={2000}
             />
 
             <SimpleTextField
@@ -140,6 +141,7 @@ const SubjectForm = props => {
               minRows={5}
               rows={runtime ? undefined : 5}
               required={required}
+              maxLength={2000}
             />
 
             {step > 0 && (
@@ -224,6 +226,7 @@ const SubjectForm = props => {
               multiline
               minRows={5}
               rows={runtime ? undefined : 5}
+              maxLength={2000}
             />
 
             {Boolean(Object.keys(errors).length) && (
