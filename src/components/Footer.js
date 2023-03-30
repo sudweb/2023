@@ -6,6 +6,7 @@ import BorderBox from './BorderBox';
 import FlatList from './FlatList';
 import Sponsors from './Sponsors';
 import footerLinks from '../data/footer-links.json';
+import Newsletter from './Newsletter';
 
 const Footer = ({
   component = 'footer',
@@ -33,6 +34,12 @@ const Footer = ({
             />
           </Grid>
         ))}
+
+        <Grid item xs={12} sm={12} md={4}>
+          <Typography variant="h3">On reste en contact&nbsp;?</Typography>
+
+          <Newsletter sx={{ mt: 2 }} />
+        </Grid>
       </Grid>
     </BorderBox>
 
