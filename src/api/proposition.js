@@ -27,6 +27,10 @@ const FORMAT_VALUES = [
 ];
 
 export default async (req, res) => {
+  // Early return as CFP ended
+  return res.status(404).json({});
+  /* eslint-disable no-unreachable */
+
   const { body } = req;
 
   const data = typeof body === 'string' ? JSON.parse(body) : body;

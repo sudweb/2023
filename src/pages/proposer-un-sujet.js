@@ -44,7 +44,17 @@ const titles = {
 
 export const Head = () => <Title value="Proposer un sujet" />;
 
-const SubjectForm = props => {
+const SubjectFormStale = () => {
+  React.useLayoutEffect(
+    () => {
+      navigate('/appel-a-sujet');
+    },
+    [],
+  );
+  return null;
+};
+
+const SubjectForm = props => { // eslint-disable-line no-unused-vars
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [step, setStep] = React.useState(0);
   const [runtime, setRuntime] = React.useState(false);
@@ -271,4 +281,5 @@ const SubjectForm = props => {
   );
 };
 
-export default SubjectForm;
+// export default SubjectForm;
+export default SubjectFormStale;

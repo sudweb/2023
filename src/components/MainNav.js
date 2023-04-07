@@ -5,10 +5,10 @@ import { Link } from 'gatsby-material-ui-components';
 import BorderBox from './BorderBox';
 
 const navItems = [
-  {
-    children: <>Appel à&nbsp;sujets</>,
-    to: '/appel-a-sujet',
-  },
+  // {
+  //   children: <>Appel à&nbsp;sujets</>,
+  //   to: '/appel-a-sujet',
+  // },
   {
     children: 'Billetterie',
     to: '/billetterie',
