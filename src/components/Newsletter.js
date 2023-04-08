@@ -21,7 +21,31 @@ const Honeypot = () => (
 );
 /* eslint-enable */
 
-const Newsletter = props => (
+const nullObj = {};
+
+const SubmitButton = React.forwardRef(({ label = 'Ok', ...props }, ref) => ((
+  <Button
+    variant="outlined"
+    type="submit"
+    name="submit"
+    size="small"
+    sx={{ minWidth: 0, py: 1, px: 2 }}
+    ref={ref}
+    {...props}
+  >
+    {label}
+  </Button>
+)));
+
+SubmitButton.displayName = 'SubmitButton';
+
+const Newsletter = ({
+  label = 'Inscrivez-vous à la newsletter',
+  inputProps = nullObj,
+  labelProps = nullObj,
+  submitProps = nullObj,
+  ...props
+}) => (
   <Box
     component="form"
     action="https://sudweb.us10.list-manage.com/subscribe/post"
@@ -33,8 +57,8 @@ const Newsletter = props => (
 
     <Honeypot />
 
-    <Box component="label" htmlFor="MERGE0">
-      Inscrivez-vous à la newsletter
+    <Box component="label" htmlFor="MERGE0" {...labelProps}>
+      {label}
     </Box>
 
     <OutlinedInput
@@ -49,17 +73,8 @@ const Newsletter = props => (
       }}
       sx={{ pr: 0.25 }}
       fullWidth
-      endAdornment={(
-        <Button
-          variant="outlined"
-          type="submit"
-          name="submit"
-          size="small"
-          sx={{ minWidth: 0, py: 1, px: 2 }}
-        >
-          Ok
-        </Button>
-        )}
+      endAdornment={<SubmitButton {...submitProps} />}
+      {...inputProps}
     />
   </Box>
 );
