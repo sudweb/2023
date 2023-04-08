@@ -1,0 +1,27 @@
+---
+sponsor: false
+title: Newsletter
+---
+
+import Title from '../components/Title.js';
+import Newsletter from '../components/Newsletter.js';
+export const Head = props => <Title value={props.pageContext?.frontmatter?.title} />;
+export { default } from '../components/PageLayout.js';
+
+  <Cadre>
+
+# Restez informé·e ?
+
+Si vous voulez être tenu·e au courant avant tout le monde de la mise en ligne
+des vidéos, des dates de la prochaine édition et de l'ouverture de son appel à
+sujet, s'inscrire à cette newsletter est probablement une chic idée !
+
+  <Newsletter
+    sx={{ mb: 8, maxWidth: 450, mx: 'auto' }}
+    labelProps={{ sx: { display: 'none' } }}
+    submitProps={{ label: 'Valider' }}
+  />
+
+[Revenir à l'accueil](../)
+
+  </Cadre>
