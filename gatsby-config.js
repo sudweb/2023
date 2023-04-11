@@ -71,6 +71,23 @@ module.exports = {
       __key: 'pages',
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'speakers',
+        path: './src/speakers/',
+      },
+      __key: 'speakers',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'events',
+        path: './src/events/',
+      },
+      __key: 'events',
+    },
+    'gatsby-transformer-remark',
+    {
       resolve: 'gatsby-plugin-webfonts',
       options: {
         fonts: {

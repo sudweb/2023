@@ -10,6 +10,14 @@ const navItems = [
   //   to: '/appel-a-sujet',
   // },
   {
+    children: 'Programme',
+    to: '/programme',
+  },
+  {
+    children: 'Les deux journées',
+    to: '/les-deux-journees',
+  },
+  {
     children: 'Billetterie',
     to: '/billetterie',
   },

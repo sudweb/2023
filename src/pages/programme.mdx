@@ -1,0 +1,31 @@
+---
+sponsor: true
+title: Programme
+---
+
+import Title from '../components/Title.js';
+import Schedule from '../components/Schedule.js';
+import Workshops from '../components/Workshops.js';
+export const Head = props => <Title value={props.pageContext?.frontmatter?.title} />;
+export { default } from '../components/PageLayout.js';
+
+  <Cadre>
+
+# Le super programme
+
+Sud Web se compose de deux journées distinctes :
+
+- les [conférences du vendredi](#vendredi) pour faire le plein d’inspiration
+- le [forum ouvert du samedi](#samedi), une journée auto-organisée dont vous
+  êtes les principaux acteurs.
+
+Découvrez le détail ci-dessous.
+
+[Retrouvez également le déroulé de votre super week-end à
+Toulouse.](../les-deux-journees)
+
+  </Cadre>
+
+  <Schedule sx={{ mt: 8 }} />
+
+  <Workshops sx={{ mt: 8 }} />
