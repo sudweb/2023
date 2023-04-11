@@ -10,10 +10,10 @@ const Honeypot = () => (
     sx={{ position: 'absolute', left: -9999 }}
   >
     <label htmlFor="b_name">Name: </label>
-    <input type="text" name="b_name" tabIndex="-1" value="" placeholder="Bob" id="b_name" />
+    <input type="text" name="b_name" tabIndex="-1" placeholder="Bob" id="b_name" />
 
     <label htmlFor="b_email">Email: </label>
-    <input type="email" name="b_email" tabIndex="-1" value="" placeholder="votreadresse@gmail.com" id="b_email" />
+    <input type="email" name="b_email" tabIndex="-1" placeholder="votreadresse@gmail.com" id="b_email" />
 
     <label htmlFor="b_comment">Comment: </label>
     <textarea name="b_comment" tabIndex="-1" placeholder="Please comment" id="b_comment" />
