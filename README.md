@@ -63,3 +63,39 @@ npm run build
      sera fonctionnel.
 7. Pousser sur la branche `main` du dépôt déploie automatiquement
    l’environnement de production (en environ 1 minute)
+
+## Contribuer
+
+### Intervenant·es et conférences
+
+Pour chaque conférence, lightning talk, ou atelier :
+
+- Créer un fichier `le-titre-sans-accent-ni-espace.md` dans le dossier
+  `src/events/`.
+- Insérer un bloc de <abbr title="bloc de YAML en entête d'un fichier markdown">frontmatter</abbr> tel que :
+  ```yaml
+  title: Le titre tel qu'il sera affiché sur le site
+  type: conference
+  authors: []
+  ```
+  - `type` peut être `conference`, `lt` ou `atelier`
+  - `authors` est un tableau, vide dans un premier temps, mais dans lequel on
+    mettra ensuite le nom du fichier *speaker* (sans le `.md`)
+- Après le bloc de *frontmatter* insérer la description de la
+  conférence/LT/atelier en markdown.
+
+Pour chaque intervenant·es :
+
+- Créer un fichier `nom-sans-accent-ni-espace.md` dans le dossier `src/speakers/`.
+- Insérer un bloc de frontmatter tel que :
+  ```yaml
+  name: Nom tel qu'il sera affiché
+  ```
+- Après le bloc de *frontmatter* insérer la *bio* de la personne en markdown.
+- Dans le ou les évènements présentés par cette personne, insérer le nom du
+  fichier (sans le `.md`) dans le tableau `authors`.
+- Dans le même dossier placer une image portant le même nom que le fichier
+  markdown, mais avec l'extension `.png` ou `.jpg`. Cette image doit être au
+  format carré et si possible optimisée/réduite (par exemple via
+  [squoosh.app](https://squoosh.app/)). Inutile de mettre une image de plus de
+  512px de côté.
