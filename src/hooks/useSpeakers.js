@@ -11,6 +11,7 @@ const useSpeakers = () => {
         filter: {
           sourceInstanceName: { eq: "speakers" },
           extension: { in: ["md"] }
+          childrenMarkdownRemark: { elemMatch: { frontmatter: { online: { ne: false } } } }
         }
       ) {
         nodes {

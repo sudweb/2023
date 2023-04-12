@@ -6,6 +6,8 @@ const useEvents = () => {
     query {
       allFile(filter: {
         sourceInstanceName: { eq: "events" }
+        extension: { in: ["md"] }
+        childrenMarkdownRemark: { elemMatch: { frontmatter: { online: { ne: false } } } }
       }) {
         nodes {
           childMarkdownRemark {

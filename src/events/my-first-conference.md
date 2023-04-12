@@ -1,9 +1,8 @@
 ---
 title: My First Conference
 type: conference
-authors: [
-  "jane-doe"
-]
+authors: ["jane-doe"]
+online: true
 ---
 
 Sed consequatur quidem deleniti ea nobis aut sunt. Fugiat fugit fugiat dolorem

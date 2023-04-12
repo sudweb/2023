@@ -1,5 +1,6 @@
 ---
 name: Jane Doe
+online: true
 ---
 
 Omnis voluptatibus nostrum ad iusto harum et natus eum. Magni est magnam totam
