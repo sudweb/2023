@@ -5,4 +5,4 @@ authors: ["boris-schapira"]
 time: "10:15"
 ---
 
-Parler dʼargent, cʼest important, et si vous ne le faites jamais, vous passez peut-être à côté de certaines choses.
+Parler d'argent, c'est important. Sans tabou ni frictions, cela permet d'aligner attentes et motivations, de prioriser ou de valoriser différentes initiatives, ou tout simplement d'assurer de bonnes conditions de vie aux personnes. Quelques astuces concrètes pour décomplexer vos rapports à ces conversations.
