@@ -1,6 +1,6 @@
 ---
 title: Préparer son absence numérique
-type: conference
+type: atelier
 authors: ["eric-daspet"]
 time: "09:00"
 ---

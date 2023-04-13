@@ -1,4 +1,5 @@
 ---
-name: Agate Berriot Blue
+name: Agate Blue
 ---
 
+*To be completed*
