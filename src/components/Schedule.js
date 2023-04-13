@@ -32,7 +32,7 @@ const Schedule = ({ sx = {}, ...props }) => {
     <BorderBox borderColor="#c5478e" sx={{ backgroundColor: '#fadff5', ...sx }} {...props}>
 
       <Typography variant="h1" component="h2">
-        Vendredi, faites le plein d'inspiration avec 11&nbsp;conférences et
+        Vendredi, faites le plein d'inspiration avec 10&nbsp;conférences et
         6&nbsp;<abbr title="conférences courtes (5 minutes)">lightning-talks</abbr>
       </Typography>
 
