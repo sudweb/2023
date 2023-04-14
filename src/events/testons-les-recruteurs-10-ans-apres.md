@@ -5,4 +5,4 @@ authors: ["xavier-mouton-dubosc"]
 time: "09:15"
 ---
 
-10 ans après quelques expériences malheureuses, j’ai dû repartir en chasse d’un nouveau poste. 10 ans de plus, et peut-être de la seniorité des deux côtés&nbsp;? À la fois des déconvenues catastrophiques et aussi de belles surprises, j’en tire des petites astuces intéressantes pour les recruteurs.
+Il y a 10 ans, j'avais noté les tests de recrutement. Depuis, les questions ont évolué, les méthodes aussi. Mais forcément en mieux ? Pourquoi les entreprises ont tant de mal à recruter dans notre secteur ? Entre déconvenues catastrophiques et belles surprises, je compile des astuces pour les candidats et les recruteurs.
