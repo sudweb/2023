@@ -5,6 +5,6 @@ authors: ["sebastien-pencreach"]
 time: "15:45"
 ---
 
-Je suis développeur depuis 14 ans. Durant cette période j’ai participé à des dizaines de projets, rencontré de nombreux collègues et travaillé dans une multitude d’équipes, sur des sujets allant du podcast d’astrologie à l’application de paiement par QR code.
+Sébastion est développeur depuis 14 ans. Durant cette période il a participé à des dizaines de projets, rencontré de nombreux collègues et travaillé dans une multitude d’équipes, sur des sujets allant du podcast d’astrologie à l’application de paiement par QR code.
 
-Et je suis hypersensible ce qui ne m’a pas facilité la tâche !
+Et il est hypersensible ce qui ne lui a pas facilité la tâche !
