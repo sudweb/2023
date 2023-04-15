@@ -57,7 +57,7 @@ const Schedule = ({ sx = {}, ...props }) => {
 
                     {/* Bio */}
                     <Typography variant="body1" component="pre" sx={{ whiteSpace: 'pre-wrap' }}>
-                      {speakers[author].excerpt}
+                      <RenderAst hast={speakers[author].htmlAst} />
                     </Typography>
                   </Box>
                 ))}
