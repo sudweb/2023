@@ -4,11 +4,16 @@ import { graphql, useStaticQuery } from 'gatsby';
 const useEvents = () => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: {
-        sourceInstanceName: { eq: "events" }
-        extension: { in: ["md"] }
-        childrenMarkdownRemark: { elemMatch: { frontmatter: { online: { ne: false } } } }
-      }) {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "events" }
+          extension: { in: ["md"] }
+          childrenMarkdownRemark: { elemMatch: { frontmatter: { online: { ne: false } } } }
+        }
+        sort: {
+          childMarkdownRemark: { frontmatter: { time: ASC } }
+        }
+      ) {
         nodes {
           childMarkdownRemark {
             id
@@ -18,6 +23,7 @@ const useEvents = () => {
               title
               type
               authors
+              time
             }
             parent { ... on File { name } }
           }

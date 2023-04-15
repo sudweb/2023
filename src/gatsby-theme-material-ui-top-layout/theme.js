@@ -44,6 +44,11 @@ const theme = responsiveFontSizes(createTheme({
       fontWeight: 400,
       lineHeight: 1.4,
     },
+    body2: {
+      fontSize: '1.125rem',
+      fontWeight: 300,
+      lineHeight: 1.3,
+    },
   },
   components: {
     MuiLink: {

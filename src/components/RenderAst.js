@@ -6,10 +6,10 @@ import { makeShortcodes } from './PageLayout';
 
 const nullObj = {};
 
-const RenderAst = ({ hast, components = nullObj, ...props }) => {
+const RenderAst = ({ hast, components = nullObj, options = nullObj, ...props }) => {
   const shortcodes = React.useMemo(
-    () => makeShortcodes({ components }),
-    [components],
+    () => makeShortcodes({ components, options }),
+    [components, options],
   );
 
   const renderAst = new Rehype2react({

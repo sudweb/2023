@@ -11,7 +11,13 @@ import CallToAction from './CallToAction';
 
 const nullObj = {};
 
-export const makeShortcodes = ({ shift, components = nullObj }) => {
+export const makeShortcodes = ({
+  shift,
+  components = nullObj,
+  options: {
+    bodyVariant = 'body1',
+  } = nullObj,
+}) => {
   const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
   if (shift) {
     headings.shift();
@@ -35,7 +41,7 @@ export const makeShortcodes = ({ shift, components = nullObj }) => {
     a: ({ href, to = href, ...props }) => <Link to={to} {...props} />,
     Big: ({ sx = {}, ...props }) => (
       <Typography
-        variant="body1"
+        variant={bodyVariant}
         paragraph
         sx={{
           color: 'text.secondary',
@@ -47,7 +53,7 @@ export const makeShortcodes = ({ shift, components = nullObj }) => {
         {...props}
       />
     ),
-    p: props => <Typography variant="body1" paragraph {...props} />,
+    p: props => <Typography variant={bodyVariant} paragraph {...props} />,
     h1: props => <Typography variant="h1" component={headings.at(0)} gutterBottom {...props} />,
     h2: props => <Typography variant="h2" component={headings.at(1)} gutterBottom {...props} />,
     h3: props => <Typography variant="h3" component={headings.at(2)} gutterBottom {...props} />,
