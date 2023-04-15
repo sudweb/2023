@@ -8,13 +8,16 @@ import Title from '../components/Title.js';
 export const Head = props => <Title value={props.pageContext?.frontmatter?.title} />;
 export { default } from '../components/PageLayout.js';
 
-  <Cadre>
+  <Cadre sx={{ '& h1': { m: 0 } }}>
 
 # Comment vont se dérouler ces deux super journées ?
 
   </Cadre>
 
-  <Cadre sx={{ mt: 8 }}>
+  <Cadre
+    sx={{ mt: 8, '& h1': { color: 'primary.main' } }}
+    variant="simple"
+  >
 
 # Dès le jeudi soir...
 
@@ -23,15 +26,26 @@ Le lieu sera communiqué ultérieurement.
 
   </Cadre>
 
-  <Cadre sx={{ mt: 8 }}>
+  <Cadre
+    sx={{
+      mt: 8,
+      '& h1': { color: 'primary.main' },
+      backgroundColor: '#fadff5',
+    }}
+    borderColor="#c5478e"
+    variant="shadow"
+  >
 
 # Vendredi, faire le plein d'inspiration avec 10 conférences
 
-[Retrouvez le détail sur la page dédiée](../vendredi/)
+[Retrouvez le détail sur la page dédiée](../programme/#vendredi)
 
   </Cadre>
 
-  <Cadre sx={{ mt: 8 }}>
+  <Cadre
+    sx={{ mt: 8, '& h1': { color: 'primary.main' } }}
+    variant="simple"
+  >
 
 # Vendredi soir,  la soirée communautaire
 
@@ -41,17 +55,22 @@ Le lieu sera communiqué ultérieurement.
 
   </Cadre>
 
-  <Cadre sx={{ mt: 8 }}>
+  <Cadre
+    alt
+    sx={{ mt: 8, bgcolor: '#9c19ec' }}
+  >
 
 # Samedi, le forum ouvert
 
-Une journée organisée par vous.
-
-[Retrouvez le détail sur la page dédiée](../samedi/)
+Une journée organisée par vous.  
+[Retrouvez le détail sur la page dédiée](../programme/#samedi)
 
   </Cadre>
 
-  <Cadre sx={{ mt: 8 }}>
+  <Cadre
+    sx={{ mt: 8, '& h1': { color: 'primary.main' } }}
+    variant="simple"
+  >
 
 # Dimanche, l’after...
 

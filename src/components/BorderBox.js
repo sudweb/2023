@@ -1,5 +1,6 @@
 import React from 'react';
-import { Paper } from '@mui/material';
+import { Paper, ThemeProvider, useTheme } from '@mui/material';
+import useAltTheme from '../hooks/useAltTheme';
 
 const BorderBox = React.forwardRef(
   ({
@@ -7,6 +8,7 @@ const BorderBox = React.forwardRef(
     variant,
     borderColor = 'currentColor',
     depth = 4,
+    alt,
     ...props
   }, ref) => {
     const variantStyle = React.useMemo(
@@ -50,21 +52,27 @@ const BorderBox = React.forwardRef(
       },
       [variant, depth, borderColor],
     );
+
+    const baseTheme = useTheme();
+    const altTheme = useAltTheme();
+
     return (
-      <Paper
-        ref={ref}
-        variant="outlined"
-        sx={{
-          borderColor,
-          borderRadius: 3.5,
-          borderWidth: 3,
-          px: { xs: 2, md: 6 },
-          py: { xs: 1, sm: 2, md: 5 },
-          ...variantStyle,
-          ...sx,
-        }}
-        {...props}
-      />
+      <ThemeProvider theme={alt ? altTheme : baseTheme}>
+        <Paper
+          ref={ref}
+          variant="outlined"
+          sx={{
+            borderColor,
+            borderRadius: 3.5,
+            borderWidth: 3,
+            px: { xs: 2, md: 6 },
+            py: { xs: 1, sm: 2, md: 5 },
+            ...variantStyle,
+            ...sx,
+          }}
+          {...props}
+        />
+      </ThemeProvider>
     );
   },
 );
