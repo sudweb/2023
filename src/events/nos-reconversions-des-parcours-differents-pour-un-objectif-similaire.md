@@ -5,5 +5,5 @@ authors: ["sandra-ibrahim-et-harold-malecot"]
 time: "09:00"
 ---
 
-Un jeune couple passionné par la tech, va vous parler de sa reconversion.
+Un jeune couple, passionné par la tech, va vous parler de sa reconversion.
 Deux profils, deux reconversions, des parcours différents mais avec un objectif similaire.
