@@ -56,8 +56,8 @@ const Event = ({
         >
           {/* Avatar */}
           {picture && (
-            <Box sx={{ flexShrink: 0, borderRadius: 1, overflow: 'hidden' }}>
-              <GatsbyImage image={picture} alt="" />
+            <Box sx={{ flexShrink: 0, overflow: 'hidden' }}>
+              <Box component={GatsbyImage} image={picture} alt="" sx={{ borderRadius: 1 }} />
             </Box>
           )}
 
