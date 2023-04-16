@@ -171,7 +171,6 @@ const Workshops = ({ sx = {}, ...props }) => {
           </Grid>
         </Grid>
 
-
         <ThemeProvider theme={baseTheme}>
           <BorderBox
             variant="simple"
