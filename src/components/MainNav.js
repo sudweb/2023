@@ -11,7 +11,7 @@ const navItems = [
   // },
   {
     children: 'Programme',
-    to: '/programme',
+    to: '/',
   },
   {
     children: 'Les deux journées',
