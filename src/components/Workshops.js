@@ -15,6 +15,7 @@ import useAltTheme from '../hooks/useAltTheme';
 import useEvents from '../hooks/useEvents';
 import useSpeakers from '../hooks/useSpeakers';
 import Event from './Event';
+import { fontFamilySyne } from '../gatsby-theme-material-ui-top-layout/theme';
 
 const forumStyle = {
   p: 2.5,
@@ -53,7 +54,7 @@ const Workshops = ({ sx = {}, ...props }) => {
           <BorderBox
             variant="simple"
             borderColor="#000807"
-            sx={{ mt: 6 }}
+            sx={{ mt: 4 }}
           >
             <Typography variant="h1" component="h2">
               Le forum ouvert c'est quoi ?
@@ -65,7 +66,11 @@ const Workshops = ({ sx = {}, ...props }) => {
               journée.
             </Typography>
 
-            <Grid container spacing={3} sx={{ mt: 6, textAlign: 'center', fontWeight: 'bold' }}>
+            <Grid
+              container
+              spacing={3}
+              sx={{ mt: 6, textAlign: 'center', fontWeight: 'bold', fontFamily: fontFamilySyne.join(',') }}
+            >
               <Grid item xs={12} sm={4}>
                 <Paper elevation={0} sx={forumStyle}>
                   <Box component="img" src={withPrefix('/images/forum-1.svg')} alt="" />
@@ -98,7 +103,7 @@ const Workshops = ({ sx = {}, ...props }) => {
         <Grid
           container
           spacing={3}
-          sx={{ mt: 6, textAlign: 'center', fontWeight: 'bold' }}
+          sx={{ mt: 4, textAlign: 'center', fontWeight: 'bold', fontFamily: fontFamilySyne.join(',') }}
         >
           <Grid item xs={12} sm={6} md={3}>
             <Box
@@ -127,7 +132,7 @@ const Workshops = ({ sx = {}, ...props }) => {
               alt=""
               sx={{ display: 'block', mx: 'auto', mb: 2 }}
             />
-            Ça commence quand ça commence
+            Ça commence<br /> quand ça commence
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -137,7 +142,7 @@ const Workshops = ({ sx = {}, ...props }) => {
               alt=""
               sx={{ display: 'block', mx: 'auto', mb: 2 }}
             />
-            Ça finit quand c’est fini
+            Ça finit quand<br /> c’est fini
           </Grid>
         </Grid>
 
@@ -149,7 +154,7 @@ const Workshops = ({ sx = {}, ...props }) => {
           une chose :
         </Typography>
 
-        <Grid container sx={{ mt: 4 }}>
+        <Grid container sx={{ mt: 4 }} spacing={2}>
           <Grid item flexGrow={0} flexShrink={0}>
             <Box
               component="img"
@@ -159,11 +164,14 @@ const Workshops = ({ sx = {}, ...props }) => {
           </Grid>
 
           <Grid item xs>
-            <Typography variant="h3">
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 600, fontSize: '1.75rem', fontFamily: fontFamilySyne.join(',') }}
+            >
               La loi des deux pieds
             </Typography>
 
-            <Typography variant="body1" sx={{ mt: 2 }}>
+            <Typography variant="body1" sx={{ mt: 2, fontWeight: 'bold' }}>
               À partir du moment où vous n’êtes plus en train d’apprendre ni de
               contribuer, vous êtes libres à tout moment de changer de session.
               Allez et venez autant que vous le voulez.

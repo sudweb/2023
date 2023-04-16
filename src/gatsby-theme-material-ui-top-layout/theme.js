@@ -3,6 +3,18 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 const TEXT_1 = '#000807';
 const TEXT_2 = '#59344F';
 
+export const fontFamilyJakarta = [
+  '"Plus Jakarta Sans"',
+  'Helvetica',
+  'Arial',
+  '"sans-serif"',
+];
+
+export const fontFamilySyne = [
+  'Syne',
+  ...fontFamilyJakarta,
+];
+
 // const theme = responsiveFontSizes(createTheme({
 const theme = responsiveFontSizes(createTheme({
   palette: {
@@ -21,13 +33,9 @@ const theme = responsiveFontSizes(createTheme({
     },
   },
   typography: {
-    fontFamily: [
-      '"Plus Jakarta Sans"',
-      'Helvetica',
-      'Arial',
-      '"sans-serif"',
-    ].join(','),
+    fontFamily: fontFamilyJakarta.join(','),
     h1: {
+      fontFamily: fontFamilySyne.join(','),
       fontSize: '2.5rem',
       fontWeight: 600,
     },
