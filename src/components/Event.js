@@ -41,7 +41,7 @@ const Event = ({
         mt: 3,
         overflow: 'hidden',
         transition: 'max-height 250ms ease',
-        maxHeight: open ? 450 : 0,
+        maxHeight: open ? 900 : 0,
       }}
     >
       <RenderAst hast={htmlAst} />
@@ -49,10 +49,14 @@ const Event = ({
 
     <Box component="aside">
       {authors.map(({ id, name, htmlAst: bioAst, picture }) => (
-        <Stack key={id} direction="row" spacing={3}>
+        <Stack
+          key={id}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={3}
+        >
           {/* Avatar */}
           {picture && (
-            <Box sx={{ flexShrink: 0 }}>
+            <Box sx={{ flexShrink: 0, borderRadius: 1, overflow: 'hidden' }}>
               <GatsbyImage image={picture} alt="" />
             </Box>
           )}
@@ -62,7 +66,15 @@ const Event = ({
             <Typography variant="h3">{name}</Typography>
 
             {/* Bio */}
-            <RenderAst hast={bioAst} options={{ bodyVariant: 'body2' }} />
+            <Box
+              sx={{
+                overflow: 'hidden',
+                transition: 'max-height 250ms ease',
+                maxHeight: open ? 900 : 0,
+              }}
+            >
+              <RenderAst hast={bioAst} options={{ bodyVariant: 'body2' }} />
+            </Box>
           </Box>
         </Stack>
       ))}
