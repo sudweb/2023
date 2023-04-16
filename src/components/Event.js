@@ -25,15 +25,9 @@ const Event = ({
     }}
     {...props}
   >
-    <Stack direction="row" spacing={1} alignItems="flex-start">
-      <EventIcon
-        type={type}
-        sx={{ verticalAlign: 'middle', mr: 1 }}
-        onClick={onClick}
-      />
-      <Typography variant="h2">
-        {title}
-      </Typography>
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="flex-start">
+      <EventIcon type={type} onClick={onClick} />
+      <Typography variant="h2">{title}</Typography>
     </Stack>
 
     <Box

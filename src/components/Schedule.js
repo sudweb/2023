@@ -71,7 +71,8 @@ const Schedule = ({ sx = {}, ...props }) => {
         {fridayEvents.map(({ id, authors, ...event }) => (
           <Grid
             item
-            sm={showDetails.includes(id) ? 12 : 6}
+            xs={12}
+            md={showDetails.includes(id) ? 12 : 6}
             key={id}
             sx={{
               display: 'flex',
