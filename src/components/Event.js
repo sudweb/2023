@@ -67,7 +67,11 @@ const Event = ({
                 maxHeight: open ? 900 : 0,
               }}
             >
-              <RenderAst hast={bioAst} options={{ bodyVariant: 'body2' }} />
+              <RenderAst
+                hast={bioAst}
+                options={{ bodyVariant: 'body2' }}
+                sx={{ 'p:last-child': { mb: 0 } }}
+              />
             </Box>
           </Box>
         </Stack>
