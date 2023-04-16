@@ -66,21 +66,21 @@ const Workshops = ({ sx = {}, ...props }) => {
             </Typography>
 
             <Grid container spacing={3} sx={{ mt: 6, textAlign: 'center', fontWeight: 'bold' }}>
-              <Grid item xs={4}>
+              <Grid item xs={12} sm={4}>
                 <Paper elevation={0} sx={forumStyle}>
                   <Box component="img" src={withPrefix('/images/forum-1.svg')} alt="" />
                 </Paper>
                 Une journée auto-organisée dont vous êtes les principaux acteurs.
               </Grid>
 
-              <Grid item xs={4}>
+              <Grid item xs={12} sm={4}>
                 <Paper elevation={0} sx={forumStyle}>
                   <Box component="img" src={withPrefix('/images/forum-2.svg')} alt="" />
                 </Paper>
                 Vous êtes libres de passer d’une session à l’autre à tout moment.
               </Grid>
 
-              <Grid item xs={4}>
+              <Grid item xs={12} sm={4}>
                 <Paper elevation={0} sx={forumStyle}>
                   <Box component="img" src={withPrefix('/images/forum-3.svg')} alt="" />
                 </Paper>
@@ -100,7 +100,7 @@ const Workshops = ({ sx = {}, ...props }) => {
           spacing={3}
           sx={{ mt: 6, textAlign: 'center', fontWeight: 'bold' }}
         >
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Box
               component="img"
               src={withPrefix('/images/loi-1.svg')}
@@ -110,7 +110,7 @@ const Workshops = ({ sx = {}, ...props }) => {
             Les personnes présentes sont les bonnes personnes
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Box
               component="img"
               src={withPrefix('/images/loi-2.svg')}
@@ -120,7 +120,7 @@ const Workshops = ({ sx = {}, ...props }) => {
             Il arrive ce qui pouvait arriver de mieux
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Box
               component="img"
               src={withPrefix('/images/loi-3.svg')}
@@ -130,7 +130,7 @@ const Workshops = ({ sx = {}, ...props }) => {
             Ça commence quand ça commence
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Box
               component="img"
               src={withPrefix('/images/loi-4.svg')}
