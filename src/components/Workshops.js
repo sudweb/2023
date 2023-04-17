@@ -186,7 +186,7 @@ const Workshops = ({ sx = {}, ...props }) => {
             sx={{ mt: 6 }}
           >
             <Typography variant="h1" component="h2">
-              Quatre ateliers pour démarrer
+              Quelques ateliers pour démarrer
             </Typography>
 
             <Stack spacing={2} sx={{ mt: 2 }}>
