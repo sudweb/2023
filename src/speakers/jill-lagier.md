@@ -2,4 +2,5 @@
 name: Jill Lagier
 ---
 
-Jill depuis une dizaine d’années dans la communication. Son expérience l’a convaincue de la force du numérique pour créer, se rencontrer et construire des choses ensemble. Ayant compris que c'était également un outil difficile d’utilisation, peu inclusif et souvent même hostile pour les personnes minorisées, elle a décidé de contribuer à le rendre plus accueillant pour toustes.
+Jill Lagier est facilitatrice numérique et cheffe de projet. Elle aide les associations, PME et indépendant-es à s’approprier les outils numériques organisationnels et de communication.
+Après 10 ans à travailler dans la communication, elle utilise ses compétences pour aider les petites structures à s’autonomiser et à naviguer dans les eaux troubles des internets.
