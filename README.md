@@ -14,13 +14,19 @@ nvm use
 npm ci
 ```
 
-### Mode développement, sans les fonctions (AWS Lambda)
+### Générer le site static
+
+```shell
+npm run build
+```
+
+### Mode développement, sans [les fonctions][functions]
 
 ```shell
 npm start
 ```
 
-### Mode développement, avec les fonctions (AWS Lambda)
+### Mode développement, avec [les fonctions][functions]
 
 *Nécessite d'avoir accès et d'être identifié au compte sur Netlify*
 
@@ -31,21 +37,15 @@ npm i -g netlify-cli
 netlify develop
 ```
 
-### Générer le site static
-
-```shell
-npm run build
-```
-
 ## Plus en détails
 
 1. S'assurer d'être en **node 18**  
    *(sinon [utiliser nvm](https://github.com/nvm-sh/nvm) pour gérer différentes
    version, et passer sur la 18)*
 2. Ne jamais utiliser `npm i`/`npm install` pour autre chose qu'ajouter un
-   nouvelle dépendance. Quand on veut installer les dépendances déjà déclarée,
+   nouvelle dépendance. Quand on veut installer les dépendances déjà déclarées,
    utiliser `npm ci`.
-3. Ajouter l'option `-legacy-peer-deps` (et non `-force`) car certaines
+3. Ajouter l'option `--legacy-peer-deps` (et non `-force`) car certaines
    dépendances sont un peu à la traîne.
 4. `npm run build` permet de générer l'ensemble du site statique dans le dossier
    `/public` ensuite `npm run serve` permet de le servir sur `localhost:9000`
@@ -99,3 +99,5 @@ Pour chaque intervenant·es :
   format carré et si possible optimisée/réduite (par exemple via
   [squoosh.app](https://squoosh.app/)). Inutile de mettre une image de plus de
   512px de côté.
+
+[functions]: https://docs.netlify.com/functions/overview/
