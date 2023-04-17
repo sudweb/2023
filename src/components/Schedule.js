@@ -26,6 +26,7 @@ const Schedule = ({ sx = {}, ...props }) => {
 
   const toggle = React.useCallback(
     id => {
+      return false;
       setShowDetails(prev => {
         if (prev.includes(id)) {
           const a = new Set(prev);
@@ -40,6 +41,7 @@ const Schedule = ({ sx = {}, ...props }) => {
 
   const toggleAll = React.useCallback(
     () => {
+      return false;
       setShowDetails(prev => (prev.length ? [] : fridayEvents.map(({ id }) => id)));
     },
     [fridayEvents],
@@ -55,7 +57,7 @@ const Schedule = ({ sx = {}, ...props }) => {
         6&nbsp;<abbr title="conférences courtes (5 minutes)">lightning-talks</abbr>
       </Typography>
 
-      {runtime && (
+      {/* {runtime && (
         <TextButton
           onClick={toggleAll}
           sx={{
@@ -65,7 +67,7 @@ const Schedule = ({ sx = {}, ...props }) => {
         >
           {!showDetails.length ? 'Déplier tout le programme ⬇️' : 'Replier tout le programme ⬆️'}
         </TextButton>
-      )}
+      )} */}
 
       <Grid container spacing={2} sx={{ mt: 2 }}>
         {fridayEvents.map(({ id, authors, ...event }) => (
