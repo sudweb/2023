@@ -39,7 +39,6 @@ const MainNav = () => (
     sx={{
       display: 'flex',
       justifyContent: 'center',
-      mt: -2.5,
       px: 1.5,
     }}
   >
@@ -49,20 +48,28 @@ const MainNav = () => (
       component="nav"
       sx={{
         borderWidth: 2,
-        px: { xs: 1, sm: 2 },
+        mt: -2.5,
+        px: { xs: 0.5, md: 2 },
         py: 0,
         pt: 2,
         borderRadius: 1.5,
         display: 'flex',
         alignItems: 'center',
         lineHeight: { xs: 1.1, sm: 1.4 },
-        fontSize: { xs: '0.8rem', md: '1.25rem' },
+        fontSize: { xs: '0.8rem', md: '1.05rem', lg: '1.25rem' },
+        flexWrap: 'wrap',
+        justifyContent: 'center',
       }}
     >
       {navItems.map((navItem, index) => (
         <React.Fragment key={JSON.stringify(navItem)}>
           {Boolean(index) && (
-            <Box component="span">|</Box>
+            <Box
+              component="span"
+              sx={{ display: { md: 'initial', xs: 'none' } }}
+            >
+              |
+            </Box>
           )}
 
           <Link
@@ -71,7 +78,7 @@ const MainNav = () => (
             sx={{
               display: 'inline-block',
               textAlign: 'center',
-              px: { xs: 0.75, sm: 2 },
+              px: { xs: 1.25, sm: 1.75 },
               py: 0.75,
               textDecoration: 'none',
               '&:hover': {
