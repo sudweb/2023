@@ -11,13 +11,14 @@ const noop = () => {};
 const Event = ({
   open = true,
   onClick = noop,
-  event: { type, title, htmlAst },
+  event: { type, title, name: anchor, htmlAst },
   authors = [],
   sx = {},
   ...props
 }) => (
   <Paper
     component="article"
+    id={anchor}
     sx={{
       p: 3,
       borderRadius: 2,
