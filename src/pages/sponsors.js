@@ -89,7 +89,7 @@ const ContactForm = props => {
             id="contact-email"
             {...register('contact-email', { required: true })}
             error={Boolean(errors?.['contact-email']?.type)}
-            label="Votre adresse email"
+            label="Votre adresse e-mail"
             type="email"
             required={required}
           />

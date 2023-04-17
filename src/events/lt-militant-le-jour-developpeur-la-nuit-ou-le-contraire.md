@@ -5,6 +5,6 @@ authors: ["mickael-deffontaine"]
 time: "15:50"
 ---
 
-Mickaël est (re)devenu militant politique il y maintenant plus d'un an. Mais à la réflexion, il milite pour certaines valeurs du web depuis qu'il est développeur. Il essaie de faire ce métier avec un minimum de déontologie, d'accompagnement citoyen et de redistribution du savoir.
+Mickaël est (re)devenu militant politique il y maintenant plus d’un an. Mais à la réflexion, il milite pour certaines valeurs du web depuis qu’il est développeur. Il essaie de faire ce métier avec un minimum de déontologie, d’accompagnement citoyen et de redistribution du savoir.
 
-Réflexion sur nos valeurs, sur ce pourquoi nous travaillons dans le "web" et comment on peut s'y perdre facilement.
+Réflexion sur nos valeurs, sur ce pourquoi nous travaillons dans le «&nbsp;web&nbsp;» et comment on peut s’y perdre facilement.
