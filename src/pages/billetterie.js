@@ -54,7 +54,7 @@ const Billetterie = props => {
           billets sont disponibles sous réserve de justificatif à envoyer à{' '}
           <Link href="mailto:contact@sudweb.fr">contact@sudweb.fr</Link>. Si vous ne
           rentrez pas exactement dans ces cases, mais êtes dans une situation comparable,
-          n'hésitez pas à <Link href="mailto:contact@sudweb.fr">nous contacter</Link> et
+          n’hésitez pas à <Link href="mailto:contact@sudweb.fr">nous contacter</Link> et
           nous en discuterons.
         </Typography>
         <Box>

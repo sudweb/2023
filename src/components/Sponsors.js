@@ -24,7 +24,7 @@ const Sponsors = () => {
         </Typography>
 
         <Typography variant="body1" paragraph>
-          Vous souhaitez devenir partenaire&nbsp;? <Link to="/sponsors">Contactez-nous pour les modalités.</Link>
+          Vous souhaitez devenir partenaire&nbsp;? <Link to="/sponsors">Contactez-nous pour les modalités</Link>.
         </Typography>
 
         <Typography variant="h1" component="h2" gutterBottom>
