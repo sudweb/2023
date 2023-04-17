@@ -4,6 +4,8 @@ import React from 'react';
 import useAltTheme from '../hooks/useAltTheme';
 import BorderBox from './BorderBox';
 import ynov from '../assets/ynov.svg';
+import jolicode from '../assets/jolicode.svg';
+import makinacorpus from '../assets/makinacorpus.svg';
 
 const Sponsors = () => {
   const baseTheme = useTheme();
@@ -29,14 +31,41 @@ const Sponsors = () => {
           Nos partenaires
         </Typography>
 
-        <Link to="https://ynov-toulouse.com/">
-          <Box
-            component="img"
-            src={ynov}
-            alt="YNOV Campus"
-            sx={{ display: 'block' }}
-          />
-        </Link>
+        <Box
+          sx={{
+            display: { xs: 'block', md: 'flex' },
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Link to="https://jolicode.com/">
+            <Box
+              component="img"
+              src={jolicode}
+              alt="JoliCode"
+              sx={{ display: 'block', mx: 'auto', width: '14em', maxWidth: '100%' }}
+            />
+          </Link>
+
+          <Link to="https://makina-corpus.com/">
+            <Box
+              component="img"
+              src={makinacorpus}
+              alt="Makina Corpus"
+              sx={{ display: 'block', mx: 'auto', width: '19em', py: 2, maxWidth: '100%' }}
+            />
+          </Link>
+
+          <Link to="https://ynov-toulouse.com/">
+            <Box
+              component="img"
+              src={ynov}
+              alt="YNOV Campus"
+              sx={{ display: 'block', mx: 'auto', width: '9em', maxWidth: '100%' }}
+            />
+          </Link>
+        </Box>
       </BorderBox>
     </ThemeProvider>
   );
