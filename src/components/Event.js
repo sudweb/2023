@@ -31,18 +31,13 @@ const Event = ({
       <Typography variant="h2">{title}</Typography>
     </Stack>
 
-    <Box
-      sx={{
-        mt: 3,
-        overflow: 'hidden',
-        transition: 'max-height 250ms ease',
-        maxHeight: open ? 900 : 0,
-      }}
-    >
-      <RenderAst hast={htmlAst} />
-    </Box>
+    {open && (
+      <Box sx={{ mt: 3 }}>
+        <RenderAst hast={htmlAst} />
+      </Box>
+    )}
 
-    <Box component="aside">
+    <Box component="aside" sx={{ mt: 2 }}>
       {authors.map(({ id, name, htmlAst: bioAst, picture }) => (
         <Stack
           key={id}
@@ -61,19 +56,15 @@ const Event = ({
             <Typography variant="h3">{name}</Typography>
 
             {/* Bio */}
-            <Box
-              sx={{
-                overflow: 'hidden',
-                transition: 'max-height 250ms ease',
-                maxHeight: open ? 900 : 0,
-              }}
-            >
-              <RenderAst
-                hast={bioAst}
-                options={{ bodyVariant: 'body2' }}
-                sx={{ 'p:last-child': { mb: 0 } }}
-              />
-            </Box>
+            {open && (
+              <Box>
+                <RenderAst
+                  hast={bioAst}
+                  options={{ bodyVariant: 'body2' }}
+                  sx={{ 'p:last-child': { mb: 0 } }}
+                />
+              </Box>
+            )}
           </Box>
         </Stack>
       ))}

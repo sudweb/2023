@@ -77,7 +77,6 @@ const Schedule = ({ sx = {}, ...props }) => {
             sx={{
               display: 'flex',
               justifyContent: 'stretch',
-              transition: 'width 250ms ease',
             }}
           >
             <Event
