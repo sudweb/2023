@@ -2,9 +2,8 @@
 title: Préparer son absence numérique
 type: atelier
 authors: ["eric-daspet"]
-online: false
 ---
 
 Comment est-ce que je transmets des informations et des secrets sur 10, 20 ou 30 ans&nbsp;? Comment gérer la confiance sur une telle durée&nbsp;?
 
-Eric vous propose d’échanger sur ces sujets et sur le testament numérique.
+Pour faire suite à la conférence de la veille, Eric vous propose un atelier discussion autour du testament numérique.
