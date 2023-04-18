@@ -1,5 +1,5 @@
 ---
-title: Préparer son absence numérique
+title: Préparer l'après numérique
 type: atelier
 authors: ["eric-daspet"]
 ---
