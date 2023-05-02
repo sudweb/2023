@@ -3,7 +3,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import { Link } from 'gatsby-material-ui-components';
 
 import BorderBox from './BorderBox';
-import MainNav from './MainNav';
+// import MainNav from './MainNav';
 
 const BLOG_LINK = 'https://sudweb.fr/blog/2023/quand-est-ce-que-vous-refaites-sudweb/';
 
@@ -30,7 +30,7 @@ const Header = ({
           pb: 4,
         }}
       >
-        <MainNav />
+        {/* <MainNav /> */}
 
         <Container maxWidth="md">
           <Typography
@@ -49,7 +49,7 @@ const Header = ({
             </Link>
           </Typography>
 
-          <Typography
+          {/* <Typography
             variant="subtitle1"
             component={Box}
             sx={{
@@ -62,7 +62,7 @@ const Header = ({
             }}
           >
             Les 2 et 3 juin 2023 à Toulouse
-          </Typography>
+          </Typography> */}
         </Container>
       </Box>
 
@@ -95,7 +95,7 @@ const Header = ({
                   color: 'text.secondary',
                 }}
               >
-                La conférence Web surtout Humaine revient&nbsp;!
+                Annulation de l'évènement
               </Typography>
             </BorderBox>
           </Container>
